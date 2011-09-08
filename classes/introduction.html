@@ -1,0 +1,228 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Web Programming</title>
+  <meta name="description" content="Friday Co-Op Web Programming, Fall 2011">
+  <meta name="author" content="Mike McNally emmecinque@gmail.com">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <link href='http://fonts.googleapis.com/css?family=UnifrakturCook:700|Numans|Aldrich|Short+Stack' rel='stylesheet' type='text/css'> 
+
+  <!-- CSS: implied media=all -->
+  <!-- CSS concatenated and minified via ant build script-->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/1140.css">
+  <link rel="stylesheet" href="css/1140_ie.css">
+  <link rel="stylesheet" href="css/by_media.css">
+  <!-- end CSS-->
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="js/modernizr-2.0.6.min.js"></script>
+</head>
+
+<body class='class-page'>
+
+  <div id="container" class='container'>
+    <header class='row'>
+      <div class='seven-wide col'>
+        <div style='padding: 10px'>
+          <h1 style='font-size: 295%;' class=''>Secrets of</h1>
+          <h1 style='font-size: 340%; padding-left: 50px' class=''>Web Programming</h1>
+        </div>
+      </div>
+      <div class='five-wide col info'>
+        <div style='padding: 10px'>
+          Friday Co-Op<br>
+          Fall 2011<br>
+          <a href='../index.html' title='Click to go back to the main scary page'>Main Page</a>
+        </div>
+      </div>
+    </header>
+
+    <div id="main" role="main" class='row'>
+      <div class='twelve-wide col'>
+        <section class='content'>
+          <h1>Introduction: Why is all this stuff here, and why are people looking at it?</h1>
+          <dl>
+            <dt>Names</dt>
+            <dd>
+              My name is Mike McNally.  Patrick McNally, Christopher McNally, and Allison McNally are my kids.
+              I do web programming for a small company in Austin.
+              <p>
+              What are your names?
+            </dd>
+
+            <dt>Course Goals</dt>
+            <dd>
+              We're going to learn a little bit about web programming.  How much?  We'll find out!
+              <p>
+              Most classes will involve me going "blah blah blah" for a little while, to introduce
+              new things about web programming.  The rest of the classes will be you working away
+              creating web pages.  This first day, I need to "blah blah" for a little longer
+              because there are many words and ideas we have to learn to get started.
+              <p>
+              We may or may not have enough laptops for everybody to use, but we will certainly
+              have enough for two-person teams. Programmers call that "Pair Programming" and
+              quite a few programmers actually work that way!
+            </dd>
+
+            <dt>What is "Programming"?</dt>
+            <dd>
+              Programming just means "telling a computer what to do."  It takes many, many forms.
+              So, as a noun, a "program" is a blob of stuff that tells a computer what to do.
+              Except it's not really <i>stuff</i>; it's more like an idea that you've written down somehow.
+              <p>
+              Most of the time, it's a little more accurate to say that programming means, "telling
+              a computer program what to do."  Computers operate with layers and layers of programs,
+              all working together. Sometimes, not working together.
+              <p>
+              When you write a short story, you create <b>literature</b>.  When you write a computer
+              program, you create <b>software.</b>
+            </dd>
+
+            <dt>Web Programming</dt>
+            <dd>
+              The <b>web</b> is a system that lets people with computers look at information
+              stored on other computers.  It is built on another system, the <b>Internet</b>,
+              which is a more general system for inter-computer communication.
+              <p>
+              People, companies, and other organizations have information of all sorts, and they
+              want to share it.  When information is made available via the web, it forms a
+              <b>web site</b>.  It's not necessarily a real "site" on Earth somewhere. A
+              web site may be just one little computer, or it may be made up of
+              lots and lots of computers spread out all over the place.
+              <p>
+              A single part of a web site is called a <b>web page</b>.  Web programming is
+              all about making web pages.  Sound simple?  Well, it is, but the things you
+              can do inside one little web page are amazing!
+              <p>
+              An important part of the web as a system is a computer program called a
+              <b>web browser</b>.  A web browser is a program that runs on your own
+              computer; it is not a web site.  "Internet Explorer", "Firefox", "Chrome",
+              and "Safari" are all names of popular web browsers. The number one job of
+              a web browser is to show web pages.
+              <p>
+              Phew! That was a lot of stuff.  But now we can see that "web programming"
+              means, "telling a web browser what to do."
+            </dd>
+
+            <dt>Languages and Computers</dt>
+            <dd>
+              To tell a computer or a web browser what to do, we use specialized
+              <b>languages</b>.  Computer languages are not like English or Spanish;
+              they're much simpler than people languages. There are lots and lots
+              of different ones, for many purposes.
+              <p>
+              Computer languages are made up by people, not computers.
+              <p>
+              For web programming, we will learn about three important languages: <b>HTML</b>,
+              <b>CSS</b>, and <b>JavaScript</b>.  There are others, but those are the three
+              that are specifically about web pages.  You can think of a web page as being
+              a cooperative effort between several separate programs written in one or more
+              of those languages.  There's almost always HTML involved, and usually CSS and
+              JavaScript too.
+            </dd>
+
+            <dt>HTML + CSS + JavaScript</dt>
+            <dd>
+              The three languages we'll talk about are responsible for three different
+              aspects of a web page:
+              <ul>
+                <li>
+                  HTML provides the <b>content</b> of a page; the information itself
+                  that you want to share. In addition to words and pictures, HTML
+                  tells the browser how the information should be interpreted.
+                  An example is the difference between the title of a story and
+                  the story itself, or how the story is broken up into paragraphs.
+                </li>
+                <li>
+                  CSS tells the browser about the <b>appearance</b> of the
+                  content.  The appearance includes the size and shape of letters
+                  to be used for text, the colors to use, and where on the screen
+                  different parts of the content should go.
+                </li>
+                <li>
+                  JavaScript tells the browser about <b>behaviors</b>.  This is
+                  the most complicated part, because it's all about how the page
+                  should <b>interact</b> with you while you look at it.
+                </li>
+              </ul>
+              <p>
+              These languages are all very different from each other, but there
+              are many interesting ways that connections are made between
+              programs based on the nature of the actual content.
+            </dd>
+          </dl>
+
+          <dt>HTML</dt>
+          <dd>
+            An HTML program is built up (mostly) of things called <b>tags</b>.
+            Tags are the way that HTML tells the browser about the differences
+            between the parts of the information that a page should show you
+            when you look at it.
+            <p>
+            There is a specific set of tags available to describe information.
+            We'll learn a lot of them as we go through the class.
+          </dd>
+
+          <dt>CSS</dt>
+          <dd>
+            A CSS program is built up of things called <b>rules</b>.  A
+            single rule tells the browser how certain parts of the information
+            should look. CSS programs do this by referring to the names of
+            tags (and other things about tags), and then providing
+            guidance for appearance details like color and size.
+          </dd>
+        </section>
+      </div>
+    </div>
+
+    <footer>
+
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.3.min.js"><\/script>')</script>
+
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script defer src="js/plugins.js"></script>
+  <script defer src="js/script.js"></script>
+  <script defer src="js/wallflower-0.4.js"></script>
+  <!-- end scripts-->
+
+	
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+  
+</body>
+</html>
+
