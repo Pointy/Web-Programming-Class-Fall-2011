@@ -255,13 +255,9 @@ header h1 { margin: 0; }
 #main .col > .content { padding: 5px 0px 5px 4px; }
 #main .col:last-child > .content { padding: 5px 4px 5px 4px; }
 
-.main-page #main a {
-  color: #e0e0fa;
-}
+.main-page #main a { color: #e0e0fa; }
 
-.main-page #main a:hover {
-  color: #ecce33;
-}
+.main-page #main a:hover { color: #ecce33; }
 
 #main div.note {
   border-width: 1px; border-style: solid;
@@ -276,17 +272,15 @@ header h1 { margin: 0; }
 
 .main-page #main div.note { border-color: #e69255; }
 
-#main dd, #main li {
-  margin-bottom: 8px;
-}
+#main dd, #main li { margin-bottom: 8px; }
 
-#main dd:last-child, #main li:last-child {
-  margin-bottom: 4px;
-}
+#main dd:last-child, #main li:last-child { margin-bottom: 4px; }
 
 .class-page #main dt {
   font-size: 130%; font-family: Aldrich, Verdana, sans-serif;
 }
+
+.class-page #main { padding-bottom: 100px; }
 
 /* lame-o grid */
 
@@ -318,11 +312,6 @@ header h1 { margin: 0; }
 .ten-wide { width: 83.33%; max-width: 830px; }
 .eleven-wide { width: 91.66%; max-width: 914px; }
 .twelve-wide { width: 100%; max-width: 1008px; }
-
-.bar { }
-
-
-
 
 
 
@@ -392,4 +381,20 @@ header h1 { margin: 0; }
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
+
+  /* ----------------------------------------------------------------- */
+
+  .class-page header { display: none; }
+  .class-page #main { font-size: 14px; }
+  .class-page #main dt { font-size: 16px; page-break-after: avoid; }
+  .class-page #main dd { font-size: 16px; page-break-before: avoid; }
+
+  html, body { height: auto; overflow: visible; width: 6.5in; }
+
+  .row .col {
+    display: block;
+    float: left;
+  }
+
+  .row { overflow: visible; }
 }
