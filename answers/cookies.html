@@ -1,0 +1,236 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Web Programming</title>
+  <meta name="description" content="Friday Co-Op Web Programming, Fall 2011">
+  <meta name="author" content="Mike McNally emmecinque@gmail.com">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <link href='http://fonts.googleapis.com/css?family=UnifrakturCook:700|Numans|Aldrich|Short+Stack' rel='stylesheet' type='text/css'> 
+
+  <!-- CSS: implied media=all -->
+  <!-- CSS concatenated and minified via ant build script-->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/1140.css">
+  <link rel="stylesheet" href="css/1140_ie.css">
+  <link rel="stylesheet" href="css/by_media.css">
+  <!-- end CSS-->
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="js/modernizr-2.0.6.min.js"></script>
+</head>
+
+<body class='class-page'>
+
+  <div id="container" class='container'>
+    <header class='row'>
+      <div class='seven-wide col'>
+        <div style='padding: 10px'>
+          <h1 style='font-size: 295%;' class=''>Secrets of</h1>
+          <h1 style='font-size: 340%; padding-left: 50px' class=''>Web Programming</h1>
+        </div>
+      </div>
+      <div class='five-wide col info'>
+        <div style='padding: 10px'>
+          Friday Co-Op<br>
+          Fall 2011<br>
+          <a href='../index.html' title='Click to go back to the main scary page'>Main Page</a>
+        </div>
+      </div>
+    </header>
+
+    <div id="main" role="main" class='row'>
+      <div class='twelve-wide col'>
+        <section class='content'>
+          <h1>What do "cookies" do? Are they bad? Can I "opt out" of them?</h1>
+          <p>
+          A web <b>cookie</b> is a piece of information from a web site.
+          Every cookie has a name &mdash; like "LAST_VISIT" or "SESSION" or "BX7YZZR" &mdash; and
+          a value &mdash; like "09 Sep 2011" or "78704".
+          A web site can send your web browser one or more cookies any time your browser
+          asks for a web page (or, actually <i>anything</i>) from the site.
+          Your browser will save the cookies inside your computer. Every time
+          you go back to a particular site for more information (that is, every
+          time you click something that goes to another page), your browser
+          sends all your cookies <i>back to the web site</i>.
+          <p>
+          Cookies were "invented" in the mid-1990's by a company called "Netscape". (It's
+          a little weird for me to have to tell you about a long ago and far away company
+          like Netscape, because in 1996 it was really hard to imagine that Netscape would
+          essentially disappear.  Such is the world of Internet business.)  The idea was
+          that web sites needed some way to keep track of you.  The underlying way that
+          web browsers talk to web sites is a scheme called a "protocol".  A protocol is
+          a way to organize how one computer "talks to" another one.  People use the word
+          to describe things like the formal etiquette to be used when important diplomats
+          from another country are meeting with people in our country.  In the same way,
+          a computer protocol is a formal specification laying out the rules for how
+          each computer in a "conversation" should behave.
+          <p>
+          Anyway, the basic web protocol is called <b>HTTP</b>.  The HTTP protocol is
+          called <i>stateless</i> because every interaction using the protocol is sort
+          of its own unique self.  It's as if every single time your browser talks to
+          Amazon, it goes like, "Hello, Amazon, my name is Mike McNally, I speak English,
+          and I'm using Firefox. I am interested in seeing something about kitchen knives."
+          The next time your browser talks to Amazon &mdash; like, the next time you click
+          something on the Amazon page you're looking at &mdash; the browser starts all 
+          over with "Hello, Amazon, my name is Mike McNally, I speak English, and I'm
+          using Firefox."
+          <p>
+          So because the beginning of every HTTP interaction was like two people meeting
+          each other for the very first time, people wanting to make interesting web sites
+          that could have more of a "conversation" with you needed <i>something</i> better
+          than that.  The idea of a cookie, therefore, is to make it possible for your web
+          browser to send back enough information that the site could know to say, "Oh, hello Mr.
+          McNally.  What more can I do for you today?"  It's like going to a shoe store and
+          giving the salesman a piece of paper with your name and shoe size on it every time you
+          ask to look at another pair of shoes.
+          <p>
+          Thus, I hope you can see that for a lot of purposes you really need cookies in order
+          to make web sites actually work nicely and properly for your benefit.  Without them, things can
+          get really goofy.  The negative aspect of cookies, however, stems directly from
+          the basic setup.  Companies that may not be interested only in being polite and
+          helpful can use cookies to gather information and analyze things you do on the
+          web in ways that are not necessarily in your best interest.
+          <p>
+          Now, it's important to know that your browser is <b>very</b> careful about
+          managing the cookies it knows about.  Any given cookie will only ever be sent
+          back to the web site where it came from. In other words, if you pick up a 
+          cookie from Amazon (and, if you visit Amazon, you definitely will unless you've
+          told your browser to ignore them), your browser will only send that cookie 
+          back to "amazon.com" web sites.  If you leave Amazon and go to Facebook,
+          your browser will absolutely never send your Amazon cookies to Facebook.
+          <p>
+          One other quick note: in addition to cookies, each time your browser starts another
+          HTTP interaction with any web site, it sends along the name of the web site
+          where a "link" to the target web site was found.  We'll talk about links later, but
+          for now just think of it as something you click on to go to some other web
+          site, or another part of the same web site.  This piece of information the browser
+          sends is called the "Referer" (yes, it's mispelled; the person who came up with this
+          idea a long time ago was not a native English speaker).
+          <p>
+          The simplest way that &mdash; I don't want to say "bad"; how about "questionable" &mdash; web sites
+          use cookies to "follow you around" on the web is like this.  Remember how I said that
+          every HTTP interaction starts off with your browser sending back all of the cookies it
+          knows about to the web site you're talking to?  Well, that also happens when a web page
+          has an image (like a photograph or something) in it.  Images are always loaded separately
+          from the contents of a main HTML program. In other words, a web page is written to say,
+          "I need that picture of a cute kitten right here", and that means to the web browser that
+          it needs to use <i>another</i> HTTP request to go get that kitten picture.  Your browser
+          does not make any distinctions about that kind of request, so on that request all the
+          cookies are sent <i>again</i>.
+          <p>
+          Now the story gets even more strange:  web browsers will allow any web page from any
+          web site to request images (cute kittens, or anything else) from <i>any random web page
+          anywhere</i>.  That may seem crazy, but it's an important necessisity for a lot of
+          confusing and complicated reasons that I won't go into.  The point is that that's
+          just the way things are. 
+          <p>
+          OK, so now we know that a web page, by referencing an image, can thereby tell your
+          browser to go and do <i>another</i> HTTP interaction.  We also know that those
+          interactions will send any appropriate cookies back to any web site whenever it
+          talks to it with HTTP. Oh, and don't forget about the "Referer"!
+          <p>
+          Let's set up an example.  There's you, going to the web site "smartrobots.com" to find
+          out about robots.  There's the Smart Robot company, which maintains that web site. 
+          Then there's a company called "Customer Stalkers Inc", that tells other companies
+          that they can provide interesting information about the people looking at their
+          web sites.  The folks at the Smart Robot company think it would be useful if they
+          knew whether customers were interested in robots that do housework, or instead
+          if they're more interested in robots that mow lawns and trim hedges outdoors.
+          The salesman from Customer Stalkers Inc. assures the Smart Robot gang that they
+          can help, because they can provide just that sort of information about many web
+          site visitors.
+          <p>
+          How does Customer Stalkers Inc. do it?  How can they possibly tell the Smart Robot
+          company (well, the company's web site) anything interesting about web site visitors?
+          Here's how:
+          <ol>
+            <li>Smart Robot makes a deal with Customer Stalkers Inc. and agrees to pay them some money for information.
+            <li>Customer Stalkers Inc. tells the Smart Robot people to add a tiny image to each of their HTML pages. The
+            tiny image &mdash; usually one that's totally invisible &mdash; is <i>not</i> kept on the
+            "smartrobots.com" web site, however.  Instead, the image will come from the Customer Stalkers Inc.
+            web site.
+            <li>Because Smart Robot is not the first company that Customer Stalkers Inc. has made such a deal with,
+            there are lots of other web sites that have similar tiny invisible images, all coming from
+            the Customer Stalkers Inc. web site.
+            <li>Now, this brings us back to you.  You're using the web, going around looking at things that
+            interest you.  Maybe you browse a web site about drought-tolerant gardening, or how to grow super-huge
+            tomatoes, or how to keep your lawn from turning brown.  Maybe some of those web sites you visit
+            are operated by companies that have <i>also</i> made deals with Customer Stalkers Inc.
+            <li>Each time you go to a web site, in other words, it's possible that there's a tiny little
+            image from Customer Stalkers Inc. on the page. Every time your browser fetches that image,
+            of course, it sends back all the "customerstalkers.com" cookies stored in your browser. It
+            also sends the "Referer", so that Customer Stalkers Inc. knows what web site you're looking
+            at!
+          </ol>
+          Over time, therefore, Customer Stalkers Inc. can know about many web sites you visit. They don't
+          really know exactly who you are, but they don't care.  They can sell the information they've 
+          collected about you based on the Internet address of your computer (and various other individually
+          harmless details).  There are also other similar schemes; lots of them, in fact. Some are
+          intended to gather information about you, and some are intended to provide less personal
+          statistical information.
+          <p>
+          In my opinion, it's not really a huge problem as long as you know that it's happening. The
+          best way to avoid being "victimized" is to completely ignore any and all Internet advertising.
+          Another thing you can do is switch off the "Referer" feature. Not all browsers allow that, 
+          but Firefox definitely does. (For those with elevated concerns over security, Firefox is
+          a really good choice of browser.  It's produced by a non-profit foundation, and they have
+          very high privacy standards. Firefox will let you control many aspects of its behavior.)
+          A few old web sites rely on "Referer" being set, but most modern ones don't (because it's
+          a terrible feature that doesn't work very well anyway).
+
+            
+        </section>
+      </div>
+    </div>
+
+    <footer>
+
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.3.min.js"><\/script>')</script>
+
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script defer src="js/plugins.js"></script>
+  <script defer src="js/script.js"></script>
+  <script defer src="js/wallflower-0.4.js"></script>
+  <!-- end scripts-->
+
+	
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+  
+</body>
+</html>
+
+
