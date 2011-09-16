@@ -1,0 +1,3 @@
+#!/bin/sh
+
+scp -r index.html css js classes answers 1and1:wilderland/web_prog
