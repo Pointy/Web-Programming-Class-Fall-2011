@@ -1,0 +1,349 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Web Programming</title>
+  <meta name="description" content="Friday Co-Op Web Programming, Fall 2011">
+  <meta name="author" content="Mike McNally emmecinque@gmail.com">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <link href='http://fonts.googleapis.com/css?family=UnifrakturCook:700|Numans|Aldrich|Short+Stack' rel='stylesheet' type='text/css'> 
+
+  <!-- CSS: implied media=all -->
+  <!-- CSS concatenated and minified via ant build script-->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/1140.css">
+  <link rel="stylesheet" href="css/1140_ie.css">
+  <link rel="stylesheet" href="css/by_media.css">
+  <!-- end CSS-->
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="js/modernizr-2.0.6.min.js"></script>
+</head>
+
+<body class='class-page'>
+
+  <div id="container" class='container'>
+    <header class='row'>
+      <div class='seven-wide col'>
+        <div style='padding: 10px'>
+          <h1 style='font-size: 295%;' class=''>Secrets of</h1>
+          <h1 style='font-size: 340%; padding-left: 50px' class=''>Web Programming</h1>
+        </div>
+      </div>
+      <div class='five-wide col info'>
+        <div style='padding: 10px'>
+          Friday Co-Op<br>
+          Fall 2011<br>
+          <a href='../index.html' title='Click to go back to the main scary page'>Main Page</a>
+        </div>
+      </div>
+    </header>
+
+    <div id="main" role="main" class='row'>
+      <div class='twelve-wide col'>
+        <section class='content'>
+          <h1>CSS Rules: Yes, it rules, but let's talk about rules</h1>
+          <dl>
+            <dt>Review</dt>
+            <dd>
+              The <b>web</b> is a vast system built on the <b>internet</b>.
+              It was designed for scientists and researchers to share information,
+              and today it's used by zillions of people for all sorts of purposes.
+              <p>
+              Information on the web is made available by organizing it into
+              <b>web sites</b>. A web site is made up of basic pieces called
+              <b>web pages</b>.
+              <p>
+              One of the most important parts of the web is a computer program
+              called a <b>browser</b>.  Your browser understands 3 important
+              programming languages that allow you to tell it what to do:
+              <b>HTML</b>, <b>CSS</b>, and <b>JavaScript</b>.
+              <p>
+              HTML describes the <b>content</b> of a web page.
+              CSS tells the browser about the <b>appearance</b> of the content.
+              JavaScript tells the browser how the page should <b>behave</b>.
+            </dd>
+
+            <dt>The Problem</dt>
+            <dd>
+              The basic job of your browser is to show you web pages.
+              More precisely, HTML and CSS (and, to a lesser extent, JavaScript)
+              were designed to allow web pages to be described, and your
+              browser's job is to understand what the HTML and CSS you feed it
+              means, and then carry out those instructions so that you see
+              the page properly.
+              <p>
+              Back a long long time ago, when printing on paper was first
+              invented, people used little blocks &mdash; almost like alphabet
+              blocks &mdash; with letters and symbols. To print a story or
+              a book, lots and lots of those blocks would be put together
+              to make all the words of the book.  A frame would hold those
+              letters in place, and then they could print pages.
+              <p> 
+              Eventually, big giant machines were developed to make printing
+              faster. Controlling those machines required a lot of special
+              skills.  When people made newspapers or things like that, usually
+              there would be people who wrote stories, people who decided where
+              the stories would go in the newspaper (and other things like
+              headlines and drawings), and still other people who would actually
+              tell the printing machinery what to do.
+              <p>
+              The people who wrote stories and decided how the newspaper should
+              look developed a system, called <b>markup</b>, that would tell the
+              printing expert what they wanted to be done.
+              The person controlling the printing machinery didn't really care
+              what the newspaper <i>said</i>.  They just had to worry about
+              carrying out the instructions specified by the markup.
+            </dd>
+
+            <dt>HTML Is Markup</dt>
+            <dd>
+              When the researcher who designed HTML originally thought about the
+              problem, therefore, there was already a long history of markup.
+              In fact, there were lots of markup systems already designed for
+              computers. One of those, called <b>SGML</b>, was popular in the 
+              1980's.
+              <p>
+              Starting from SGML, then, Mr. Berners-Lee created a much-simplified
+              variation, and that was the beginning of HTML.
+            </dd>
+
+            <dt>How Are Antique Printers Like HTML?</dt>
+            <dd>
+              Think back to those "frames" of alphabet blocks we talked about.
+              Think about what newspapers look like.
+              If you squint your eyes and just think about the shapes on a
+              page of newsprint, you see boxes of information going down the
+              page, one on top of the other. Inside the boxes, letters, spaces,
+              and punctuation just sort of "flow", line by line through the
+              boxes.
+              <p>
+              (We'll talk about the columns that go <i>across</i> the page.
+              For now, we'll concentrate on boxes piled one on top of the
+              other, going <i>down</i> the page.)
+              <p>
+              Almost all computer-oriented markup systems are based on that
+              simple idea: boxes of flowing text, piled on top of each other.
+              HTML is like that.  The basic thing you do in your HTML programs
+              is organize your content, like text for stories or poems and illustrations
+              and pictures, into boxes.
+            </dd>
+
+            <dt>Wait I Thought This Was About CSS</dt>
+            <dd>
+              It is about CSS.  The job of HTML is to organize your content
+              into boxes. CSS says what the boxes (and the content inside the boxes)
+              should look like.
+              The two work together to determine how a web page looks.
+              <p>
+              However, HTML is "older" than CSS.
+              That means that when HTML first existed, there was no such
+              thing as CSS.
+              HTML allows you to put your content into boxes such that
+              a browser can know how to show it even without CSS.
+              The way that works is based on a family of <b>tags</b>
+              (remember tags from last week?) that make different
+              kinds of boxes.
+            </dd>
+
+            <dt>Paragraphs</dt>
+            <dd>
+              Last week we looked at a particular kind of box,
+              the <b>paragraph</b> box.
+              Paragraphs are a pretty basic kind of box.
+              Recall that to make a paragraph, we use some 
+              HTML that looks like this:
+              <code>
+                &lt;p&gt;
+                  This is a lovely paragraph.
+                  I think it may be my favorite paragraph ever.
+                &lt;/p&gt;
+              </code>
+              There are other kinds of boxes too.
+              For example, there's a family of "header" tags,
+              "h1" through "h6", that can be used to 
+              identify chapter and section titles:
+              <code>
+                &lt;h1&gt;My Summer Vacation&lt;/h1&gt;
+              </code>
+              The browser knows that second-level headings should
+              be a little smaller than chapter titles, etc.
+              <p>
+              There's another kind of box that's a sort-of
+              "generic" box.
+              The "div" tag makes a box, but it's a box without
+              any pre-arranged meaning. In other words, the 
+              browser knows it's a box, so it knows it stacks
+              on top of other boxes, but it doesn't associate
+              it with any particular kind of information.
+              <p>
+              (Can you guess how it will be possible to control what
+              content in a "div" tag looks like?)
+            </dd>
+
+            <dt>Box Me In</dt>
+            <dd>
+              Inside boxes, we find <b>inline</b> content.
+              The simplest inline content is just blah blah
+              blah text:
+              <code>
+                &lt;p&gt;
+                  This summer was fun. I went to a beach. My
+                  little brother got sunburned and a fish bit
+                  him but so what. I had lots of cotton candy.
+                &lt;/p&gt;
+              </code>
+              The browser knows that simple text should just be strung along,
+              letter by letter. It also knows to break at the edge of the page
+              and start over on the next line.
+              <p>
+              There are some tags that don't make boxes. Instead, they tell
+              the browser that a stretch of inline content has some overall
+              relationship. One example is the title of a movie, which is
+              traditionally shown as <i>italic text</i>:
+              <code>
+                &lt;p&gt;
+                  Yesterday my sister went to see
+                  &lt;i&gt;Forever Bieber&lt;/i&gt; and ever
+                  since she's been hyperventilating
+                  with excitement.
+                &lt;/p&gt;
+              </code>
+              The "i" tag tells the browser to use italic letters. (Wait a 
+              minute &mdash; I thought it was CSS's job to control appearance!)
+              <p>
+              Just like with blocks, there's a "generic" inline content tag
+              that lets content be grouped without any particular reason. It's
+              called "span".  (How much do you think you could accomplish with
+              just "div" and "span" in an HTML page?)
+            </dd>
+
+            <dt>Every Tag Is Special</dt>
+            <dd>
+              Well, not really. So far all we've seen in CSS is that we can
+              make all paragraphs turn purple, and stuff like that. I don't know
+              about you, but sometimes I like certain paragraphs to be different.
+              <p>
+              HTML and CSS, thankfully, give us lots of neat-o ways to make our
+              plain anonymous tags more "special".  The first way we'll talk about
+              is the idea of categorizing or "classifying" our tags.  In HTML,
+              you can give a tag one or more "classes" to say, for example, what
+              <i>kind</i> of paragraph you've got. You do it by putting some extra
+              information in the <b>opening tag</b> of the paragraph:
+              <code>
+                &lt;p class="poem"&gt;
+                  Turtle, turtle, on the ground
+                  Pink and shiny, turn around.
+                &lt;/p&gt;
+              </code>
+              Now we've got a way to say, in HTML, "Hey, Browser!  This is a 
+              paragraph, but it's a <i>poem</i> paragraph, unlike all my other
+              boring paragraphs."  Great!  Except ... how do we use CSS to tell
+              the browser how our poems should look?
+              <p>
+              In CSS, remember that each <b>rule</b> consists of a "selector"
+              and a "rule body".  So far we've seen really simple selectors that
+              just mean, "every <b>p</b> tag in the whole page".  Well we can 
+              now say, "every <b>p</b> tag that's a poem" like this:
+              <code>
+                p.poem {
+                  white-space: pre;
+                }
+              </code>
+              The class name "poem" is added to the tag name ("p") with a period
+              character. So "p.poem" means, to the browser, that the rule body
+              applies not to every single "p" tag, but <b>only</b> to "p" tags
+              that are marked as being poems!
+            </dd>
+            
+            <dt>Thinking Inside And Outside The Box</dt>
+            <dd>
+              Think about that imaginary newspaper again.
+              Sometimes, content is broken down in a more
+              complicated way than just a list of boxes.
+              Sometimes there are boxes inside other boxes.
+              <p>
+              In HTML, you can put a tag <i>inside</i> another
+              tag:
+              <code>
+                &lt;div&gt;
+                  &lt;p&gt;
+                    This is a short sentence.
+                  &lt;/p&gt;
+                  &lt;p&gt;
+                    Another paragraph.
+                  &lt;/p&gt;
+                &lt;/div&gt;
+              </code>
+              That's a box inside a box!
+              <p>
+              Next time we'll talk about some crazy stuff we can do
+              with boxes inside boxes, classes, and CSS.
+            </dd>
+
+            <dt>Exercises</dt>
+            <dd>
+              If you <a href='http://jsfiddle.net/Pointy/N57sg/' title='click here! YOU DO IT NAO!!'>click here</a>, you'll see
+              a jsfiddle that I've already made up.  Here are some ideas for what you can try:
+              <ol>
+                <li>Notice that the page <i>looks</i> alright in the HTML tag, but it's all just a jumble when it shows up in the lower right. What can you do to make it look better?
+                <li>Should the title of the story look different than the paragraphs?
+                <li>There are movie titles in the story. Can you make them show up <i>in italics</i>?
+                <li>Can you think of more than one way to make a movie title show up like that?
+                <li>Can you think of more than one way to break up the story into paragraphs?
+              </ol>
+            </dd>
+          </dl>
+        </section>
+      </div>
+    </div>
+
+    <footer>
+
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.3.min.js"><\/script>')</script>
+
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script defer src="js/plugins.js"></script>
+  <script defer src="js/script.js"></script>
+  <script defer src="js/wallflower-0.4.js"></script>
+  <!-- end scripts-->
+
+	
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+  
+</body>
+</html>
+
