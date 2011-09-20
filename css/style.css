@@ -282,13 +282,16 @@ header h1 { margin: 0; }
 
 .class-page #main { padding-bottom: 100px; }
 
-.class-page code {
+.class-page code, .class-page .code {
   font-family: fixed, monospace; 
   font-size: 18px;
+}
+
+.class-page code {
+  white-space: pre;
   display: block;
   margin: 10px 0;
   padding: 0 0 0 1em;
-  white-space: pre;
 }
 
 /* lame-o grid */

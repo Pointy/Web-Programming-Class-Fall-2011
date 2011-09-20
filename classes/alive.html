@@ -1,0 +1,460 @@
+
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Web Programming</title>
+  <meta name="description" content="Friday Co-Op Web Programming, Fall 2011">
+  <meta name="author" content="Mike McNally emmecinque@gmail.com">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <link href='http://fonts.googleapis.com/css?family=UnifrakturCook:700|Numans|Aldrich|Short+Stack' rel='stylesheet' type='text/css'> 
+
+  <!-- CSS: implied media=all -->
+  <!-- CSS concatenated and minified via ant build script-->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/1140.css">
+  <link rel="stylesheet" href="css/1140_ie.css">
+  <link rel="stylesheet" href="css/by_media.css">
+  <!-- end CSS-->
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="js/modernizr-2.0.6.min.js"></script>
+</head>
+
+<body class='class-page'>
+
+  <div id="container" class='container'>
+    <header class='row'>
+      <div class='seven-wide col'>
+        <div style='padding: 10px'>
+          <h1 style='font-size: 295%;' class=''>Secrets of</h1>
+          <h1 style='font-size: 340%; padding-left: 50px' class=''>Web Programming</h1>
+        </div>
+      </div>
+      <div class='five-wide col info'>
+        <div style='padding: 10px'>
+          Friday Co-Op<br>
+          Fall 2011<br>
+          <a href='../index.html' title='Click to go back to the main scary page'>Main Page</a>
+        </div>
+      </div>
+    </header>
+
+    <div id="main" role="main" class='row'>
+      <div class='twelve-wide col'>
+        <section class='content'>
+          <h1>It's Alive! Interactive Web Pages and JavaScript</h1>
+          <dl>
+            <dt>Review</dt>
+            <dd>
+              Last week, we talked &mdash; well, I talked, anyway &mdash; about
+              the web browser's job. I tried to help everybody understand that
+              the browser was designed to show content based on old ideas taken
+              from the world of book, magazine, and newspaper printing.
+              The main concepts were the two basic ways the browser approaches
+              the problem of showing your information on the screen:
+              <span class='terminology'>block content</span> and
+              <span class='terminology'>inline content</span>.
+              <p>
+              I went over some miscellaneous new (to us) tags.
+              There were the block tags
+              <span class='code'>h1, h2, h3, h4, h5, h6</span>, and
+              <span class='code'>div</span>, and the inline tags
+              <span class='code'>i, b</span>, and
+              <span class='code'>span</span>.
+              The <span class='code'>div</span> and <span class='code'>span</span>
+              tags are interesting because they just mean
+              "this is a block" or "this is just a grouping of inline content".
+              <p>
+              Finally, we talked about a way to make a tag have a special
+              "personality" by assigning a value to an
+              <span class='terminology'>attribute</span>
+              of a tag, specifically the <span class='code'>class</span>
+              attribute.
+            </dd>
+
+            <dt>First, More Tags</dt>
+            <dd>
+              We'll get to the JavaScript stuff in a second, but first I'll
+              introduce a couple more tags just for fun.
+              The first is an inline tag called <span class='code'>img</span>, which
+              lets you put pictures on a web page.
+              The <span class='code'>img</span> tag is interesting because
+              it's the first tag we've seen that requires an attribute
+              in order for it to make sense.
+              <p>
+              Browsers allow images to be part of web pages, but you don't
+              just put the image in the middle of your HTML program directly.
+              Images in computers are stored as complicated jumbles of
+              numbers &mdash; lots of numbers. A single image, especially
+              a photograph, is probably much, much larger (in terms of how
+              much room it takes up inside your computer) than any HTML or
+              CSS program you'll ever write. Thus, it would be really ugly
+              to directly include a gigantic pile of numbers right in the
+              middle of your nice neat HTML.
+              <p>
+              So, instead of putting the raw image directly in the middle
+              of your HTML, you tell the browser where to get your image.
+              In other words, your HTML program will include an
+              <span class='code'>img</span>
+              tag that tells the browser the name of your image.
+              When the browser sees the tag, it looks for an
+              attribute called
+              <span class='code'>src</span>
+              to find out the "name" of your image.
+              An image tag, therefore, might look like this:
+              <code>
+                &lt;img src='cute_kitten.jpg'&gt;
+              </code>
+              Now, there's another funny thing about the
+              <span class='code'>img</span>
+              tag.  Unlike the other tags we've seen, the
+              <span class='code'>img</span>
+              tag cannot have any content. In effect, the image
+              itself is the content, so it just doesn't make
+              sense to put anything "inside" it.
+              Therefore, you'll never see
+              <code>
+                &lt;/img&gt;
+              </code>
+              (or, if you do, it's just a mistake, and the browser will
+              ignore it anyway).
+            </dd>
+
+            <dt>What's In A Name?</dt>
+            <dd>
+              These "names" I mentioned when talking about images: what are they?
+              Well, a name of something on the web is called a
+              <span class='terminology'>URL</span>.
+              You're probably familiar with the idea; here are some URLs:
+              <pre style='padding-left: 4em'>
+                http://www.amazon.com
+                http://google.com
+                http://twitter.com/FridayCoopWeb
+              </pre>
+              There are all sort of weird rules about the different parts
+              of a URL, but that's all pretty boring and not very interesting
+              for us at the moment.  For us, jsfiddle takes care of most of
+              it for us. However, for images, we will in fact need to have
+              an image somewhere that's actually got an Internet name &mdash;
+              a URL.
+              <p>
+              This problem we face is also a problem that real-life web
+              developers face all the time.
+              If I want to use our friend jsfiddle to try out an experiment,
+              and I need an image, I do what lots of web developers do: I
+              use a "placeholder" site.
+              A placeholder site is a website, usually completely free for
+              everybody to use, that lets you create an Internet name (URL)
+              and it will send an image back to your browser.
+              There are several placeholder sites, but really the only
+              ones that you need to know are:
+              <pre style='padding-left: 4em'>
+                http://placekitten.com
+                http://placedog.com
+              </pre>
+              To make up a URL for an image, you just pick an image size
+              in pixels (remember: "pixel" basically means "dot on your
+              screen").  Here's a 200x200 image from placekitten.com:
+              <div><img src='http://placekitten.com/200/200'></div>
+              <p>
+              The URL for that kitten is "http://placekitten.com/200/200".
+              The first number determines the width, and the second number
+              determines the height.  You can pick just about any size you
+              want, and there are lots of different kittens.
+            </dd>
+
+            <dt>I Love Buttons</dt>
+            <dd>
+              You've probably seen many, many buttons on web pages you've
+              used. There are buttons all over jsfiddle for example.
+              You can make a button in HTML with an inline tag called <span class='code'>button</span>.
+              A button, unlike an image, does have content.
+              In the simple case, the content of a button is a short
+              phrase that will show up on the button:
+              <code>
+                &lt;button&gt;Click Me!&lt;/button&gt;
+              </code>
+              A button can contain almost any inline content (but not another button!),
+              including an image.
+              So you could make a dog button like this:
+              <code>
+                &lt;button&gt;
+                  &lt;img src="http://placedog.com/100/60"&gt;
+                &lt;/button&gt;
+              </code>
+            </dd>
+
+            <dt>Tags, Elements, and Identity</dt>
+            <dd>
+              We're familiar with the word "tag".
+              There's another word that I'll use and that you'll see
+              in books or blog posts about web programming, and that's
+              "element".
+              The difference in meaning is pretty subtle.
+              A tag is a tag, but when you put a tag into an
+              HTML program it becomes an element of that web page.
+              In other words, when you talk about the different bits
+              and pieces of a web page, you talk about the elements
+              on the page.  Each element is a tag, but we think
+              of it in a slightly different way based on how it
+              works in a particular page. It's kind of like the
+              difference between an actor's name and the name
+              of a character in a play or movie.
+              <p>
+              By the way that reminds me: there's another placeholder
+              site called "placesheen.com":
+              <div><img src='http://placesheen.com/200/200'></div>
+              <p>
+              Sometimes it's important to give a particular element
+              on a page a completely unique name. To do that, you
+              can add an <span class='code'>id</span>
+              attribute to an element. Here's a button with a unique
+              name:
+              <code>
+                &lt;button id="launch"&gt;Launch The Rocket&lt;/button&gt;
+              </code>
+              In case you want to write a CSS rule for that one particular
+              button, you'd do it like this:
+              <code>
+                #launch { color: red; }
+              </code>
+              You don't even have to tell CSS that the rule is for
+              <span class='code'>button</span>
+              tags, because that unique name ("launch") has
+              to be really and truly unique &mdash; no other element
+              on the page can be called "launch".
+              In the CSS selector, all you need is the symbol "#" (called
+              a "pound sign", or "sharp" by some people) and then the
+              unique name that you put for the
+              <span class='code'>id</span>
+              attribute.  (No space in between them!!)
+            </dd>
+
+            <dt>Finally JavaScript</dt>
+            <dd>
+              JavaScript is by far the most powerful of the three web
+              programming languages we're studying.
+              What does "powerful" mean?
+              Well, for us it means that there's much, much more you
+              can do to control what a browser does with JavaScript
+              than with the other languages.
+              HTML and CSS are both mostly "static", which means that
+              they say what them want the browser to do, and the browser
+              does it, and that's pretty much that.
+              They're kind-of like the instructions that come with a
+              Lego kit.  You build the kit, and then you stare at it or
+              play with it or whatever, and the instructions don't matter
+              anymore.
+              <p>
+              JavaScript, however, lets you "motorize" your web pages.
+              It lets you make your page respond to things that a person
+              looking at the page do, like move the mouse, click on 
+              buttons, type on the keyboard, or scroll the page up and
+              down.
+              Your JavaScript code can change the page in all sorts of
+              ways by adding or even removing elements.
+              JavaScript also lets you change details of tags, especially
+              the value of element attributes.
+              <p>
+              JavaScript is a really neat language, so we're going to
+              start off slowly.
+              We're also going to be using a very powerful "add on"
+              tool for JavaScript called "jQuery".
+              This tool (or "library", as programmers call such things)
+              was written by a lovely young man named John Resig.
+              The point of jQuery is to make it much easier for your
+              JavaScript programs to control your web pages. It's
+              very popular among real web developers, and many, many
+              real websites use it.
+            </dd>
+
+            <dt>First Simple Step: Button Clicks</dt>
+            <dd>
+              Let's get started by jumping right in and looking at
+              something we can do with buttons.
+              When you do something on a web page like clicking on
+              a button, the browser considers that to be a special
+              moment called an <span class='terminology'>event</span>.
+              The word "event" is always used, even if the thing that
+              you did with the page doesn't seem very special.
+              Even just moving your mouse without clicking is
+              considered an "event" by the browser.
+              Usually, the browser associates a particular element
+              on a web page as being the "target" of an event.
+              That relationship is generally pretty clear &mdash; when
+              you click on a button, for example, there's a "click"
+              event, and the "target" is the button element itself.
+              <p>
+              The primary way that your JavaScript code will "motorize"
+              your web pages is by telling the browser what to do
+              when certain events happen.
+              From JavaScript, with jQuery, that's very easy to do,
+              especially now that we're CSS experts!
+              <p>
+              The jQuery library lets you identify web page elements
+              with the very same "selector" things that you know from
+              CSS. What we're going to look at is a simple page with
+              a button and some words.
+              Our example will use the button make the words change
+              color. Here's the HTML:
+              <code>
+                &lt;button id='clicker'&gt;Click Me!&lt;/button&gt;
+                &lt;div id='words'&gt;
+                  I wonder if I'll actually see Justin Bieber today?
+                &lt;/div&gt;
+              </code>
+              <p>
+              We'll also need a little bit of CSS:
+              <code>
+                #words.clicked { color: red; }
+              </code>
+              Remember that "." from last time?  That's what you put
+              in a CSS selector to tell it that you're interested
+              in elements with a particular class.  In this case,
+              it means, "this rule is for the element whose unique
+              name is 'words', but only if it has the class
+              'clicked'."  But wait &mdash; in that HTML I just showed
+              you, there was no "clicked" class.  That's right! We're
+              going to use JavaScript to do that!
+              <p>
+              What we'll do is tell the web browser that when I click on
+              the button named "clicker", it should add that "clicked"
+              class to the element named "words". That's going to look
+              like this:
+              <code>
+                $('#clicker').click(function() {
+                
+                  $('#words').addClass('clicked');
+
+                });
+              </code>
+              That's JavaScript, though because we're using jQuery it's
+              got a particular look to it. (It's like how people from
+              England and people from Texas may speak English, but it
+              sounds different.)
+              JavaScript is really quite a bit different than CSS and
+              HTML.
+              We can say that an HTML program is a bunch of tags, and
+              that CSS is a list of rules.
+              With JavaScript, we talk about things called
+              <span class='terminology'>statements</span>.
+              A statement in JavaScript can take many different forms.
+              In that example above, there are two statements, one
+              inside another.
+              <p>
+              In a way similar to how an HTML tag can "contain" another
+              tag, a JavaScript statement can contain other statements.
+              There are different ways that may happen, and different
+              things that the relationship between the statments can
+              mean.`
+              Here are the key things to notice:
+              <ul>
+                <li>The dollar sign is "the mark of jQuery".  It's like a web page Swiss Army knife and we'll use it for all sorts of things.
+                <li>Note that after each of the dollar signs in this example, there's
+                a quoted CSS selector string.  Recognize them?  That's how we'll tie together
+                our JavaScript code with our HTML code.
+                <li>See the word "click", right after the dot? That is the jQuery way 
+                to tell the browser that we want it to do something when there's
+                a mouse click event.  In particular, a mouse click event on the
+                element selected with that selector.
+                <li>The word "function" is super magic and we'll talk about it a lot.
+                For now, think of it as "hocus pocus" or something.
+                <li>Notice that JavaScript uses curly braces too, and in a similar
+                way to CSS.  In this case, we'll say that those curly braces mark
+                the start and the end of the function <span class='terminology'>body</span>.
+                (Yes, the word "body" means something in HTML too. It's so confusing.)
+                <li>Inside the function body, there's another jQuery statement with
+                a selector that refers to our block of words.
+                <li>Finally, it's safe for you to guess what "addClass" means.
+              </ul>
+            </dd>
+
+            <dt>Trying It Out</dt>
+            <dd>
+              It's no fun to just look at boring code.
+              I've already typed in the HTML and the CSS, and you can go find the jsfiddle here:
+              <pre style='padding-left: 4em;'>
+                <a href='http://jsfiddle.net/Pointy/7afxS/' target='_blank'>http://jsfiddle.net/Pointy/7afxS/ </a>
+              </pre>
+              Click on that, and you should see a new window (or a new browser tab)
+              with the pre-typed jsfiddle.
+              If you then type that JavaScript into the JavaScript box and hit the "Run" button,
+              well, nothing will happen right away.
+              However, if you click that button, something should happen - can you guess what?
+              <p>
+              There's another jQuery function similar to "addClass", called "removeClass".
+              Can you think of what you might have to do in order to have two buttons
+              on the page instead of one, so that you could have a button to turn the words
+              red and another button to make them not be red?
+              <p>
+              What if you wanted another button to make the words blue instead of red? How could you do that?
+              How would you do it to have the choice of red or blue?
+              <p>
+              Our CSS rule is just an ordinary rule here &mdash; CSS doesn't even know that
+              the JavaScript is there!  It's just a rule, so it can contain any other
+              properties we've played with:
+              <ul>
+                <li>background-color
+                <li>font-size
+                <li>border-width
+              </ul>
+              You can find out about lots and lots of CSS properties from sites like the
+              <a href='https://developer.mozilla.org/en/CSS_Reference'>Mozilla Documentation Network</a>
+              but be warned that CSS properties can be kind-of weird. Some of them don't even
+              work; it's a strange situation.
+            </dd>
+          </dl>
+        </section>
+      </div>
+    </div>
+
+    <footer>
+
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.3.min.js"><\/script>')</script>
+
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script defer src="js/plugins.js"></script>
+  <script defer src="js/script.js"></script>
+  <script defer src="js/wallflower-0.4.js"></script>
+  <!-- end scripts-->
+
+	
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+  
+</body>
+</html>
+
