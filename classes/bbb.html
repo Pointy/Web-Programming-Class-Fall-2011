@@ -1,0 +1,414 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Web Programming</title>
+  <meta name="description" content="Friday Co-Op Web Programming, Fall 2011">
+  <meta name="author" content="Mike McNally emmecinque@gmail.com">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <link href='http://fonts.googleapis.com/css?family=UnifrakturCook:700|Numans|Aldrich|Short+Stack' rel='stylesheet' type='text/css'> 
+
+  <!-- CSS: implied media=all -->
+  <!-- CSS concatenated and minified via ant build script-->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/1140.css">
+  <link rel="stylesheet" href="css/1140_ie.css">
+  <link rel="stylesheet" href="css/by_media.css">
+  <!-- end CSS-->
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="js/modernizr-2.0.6.min.js"></script>
+</head>
+
+<body class='class-page'>
+
+  <div id="container" class='container'>
+    <header class='row'>
+      <div class='seven-wide col'>
+        <div style='padding: 10px'>
+          <h1 style='font-size: 295%;' class=''>Secrets of</h1>
+          <h1 style='font-size: 340%; padding-left: 50px' class=''>Web Programming</h1>
+        </div>
+      </div>
+      <div class='five-wide col info'>
+        <div style='padding: 10px'>
+          Friday Co-Op<br>
+          Fall 2011<br>
+          <a href='../index.html' title='Click to go back to the main scary page'>Main Page</a>
+        </div>
+      </div>
+    </header>
+
+    <div id="main" role="main" class='row'>
+      <div class='twelve-wide col'>
+        <section class='content'>
+          <h1>Boxes, Borders, and Backgrounds</h1>
+          <dl>
+            <dt>Review</dt>
+            <dd>
+              Last week, we talked about a couple of new tags,
+              <span class='code'>img</span> and <span class='code'>button</span>.
+              We built a simple "dynamic" page that used a button to make
+              things happen to a <span class='code'>div</span> tag. To
+              do that, we wrote some simple JavaScript code to handle
+              an <span class='terminology'>event</span> from the browser
+              when the button was clicked.  That was pretty cool.
+            </dd>
+            
+            <dt>Boxes. Or blocks. Whatever.</dt>
+            <dd>
+              Recall that HTML content is, over-simplifying a little, either
+              <span class='terminology'>block content</span> or
+              <span class='terminology'>inline content</span>.
+              Generally, inline content is inside block elements (tags), like
+              <span class='code'>div</span> or <span class='code'>p</span> tags.
+              <p>
+              Blocks stack on top of each other, top to bottom.
+              We're going to look at several ways that CSS can control
+              the way blocks look.  First, we have to look at how blocks
+              look as far as the browser is concerned, without any extra
+              direction from CSS.
+            </dd>
+
+            <dt>Block Layout</dt>
+            <dd>
+              Let's use <span class='code'>div</span> as the basic element
+              to talk about, because it's so simple.
+              If you give a browser a <span class='code'>div</span> tag
+              with some words in it, like this:
+              <code>
+                &lt;div&gt;
+                  Hello. This is a story of a cat, and a very
+                  strange little mouse that became the cat's
+                  friend.
+                &lt;/div&gt;
+              </code>
+              The "box" that the browser makes for a block element has to
+              have a size, or else it wouldn't be much of a box. How does
+              the browser figure out how big the box is?
+              <p>
+              Well without any other rules from CSS, the browser does this.
+              First, the <span class='terminology'>width</span> of the
+              box will be the width of the bigger box surrounding it.
+              For simple blocks on a simple page, that's going to be the
+              width of the whole page.
+              Then, the browser lets the <span class='terminology'>height</span>
+              of the box kind-of "stretch" bigger and bigger so that all the inline
+              content &mdash; that is, whatever is inside the box &mdash; is contained
+              inside of it.
+            </dd>
+
+            <dt>Lord Of The Boxes</dt>
+            <dd>
+              With CSS rules, there are all sorts of things about block elements
+              that can be controlled.
+              The most basic things, as you may guess, are the height and the
+              width of the box.
+              The CSS properties involved are, thankfully, called
+              <span class='code'>height</span> and <span class='code'>width</span>.
+              We might want to create some narrow boxes, so we could do that by
+              using a class:
+              <code>
+                &lt;div class="narrow"&gt;
+                  Sometimes skinny things can be very interesting.
+                &lt;/div&gt;
+              </code>
+              We can set up CSS to control those like this:
+              <code>
+                div.narrow {
+                  width: 200px;
+                }
+              </code>
+              That rule tells the browser that <span class='code'>div</span>
+              elements with the class "narrow" should be 200 pixels (dots) wide.
+              (There are lots of ways of specifying measurements in the browser;
+              at some point we'll talk about that.)
+              When you use CSS to control the width, then as the browser lays
+              out the inline content inside the block, it knows that it needs
+              to start a new "line" whenever it exhausts a 200-pixel wide line.
+              <p>
+              Similarly, we can use CSS to set the height of a box:
+              <code>
+                div.shrimpy {
+                  height: 100px;
+                }
+              </code>
+              Now the thing about setting the height of a box that's different
+              from setting the width is that it's a lot harder to figure out what
+              to do with excess inline content.
+              When the box is just narrow, the browser just has to make the lines
+              of inline content shorter, but it can keep on going down making
+              the box bigger and bigger.
+              If we tell it how tall the box is, however, what's it supposed
+              to do when it runs out of room?
+            </dd>
+
+            <dt>Two Pound Sausage, One Pound Bag</dt>
+            <dd>
+              The problem of what to do when the inline content in a box
+              is just too big to fit, based on CSS rules for height and
+              width, is called <span class='terminology'>overflow</span>.
+              If you don't tell the browser otherwise (with CSS), the
+              browser does something that might seem pretty weird: it just
+              lets the content of the block spill outside of it, as if the
+              box "walls" weren't even there.
+              In other words, if you make a block and use CSS to tell
+              the browser that the box should be 100 pixels tall, but then
+              you put a paragraph in the box that's way too big, the
+              browser just keeps going and going as if the box weren't
+              even there.
+              <p>
+              Well of course CSS has control over that behavior. There's
+              a CSS property for block elements called (again, thankfully)
+              <span class='code'>overflow</span>.
+              The overflow property can have the following values:
+              <ul>
+                <li><span class='code'>visible</span> is the default; that is, it's what the browser does if you don't tell it otherwise.
+                <li><span class='code'>hidden</span> means that the block should be like a window, and if the inner inline content
+                doesn't fit, it just gets cut off or "clipped".
+                <li><span class='code'>auto</span> makes the box size "real", like "hidden" does, but instead of just hiding the content
+                it gives you <span class='terminology'>scroll bars</span> as necessary when the content is too big.
+                <li><span class='code'>scroll</span> is like "auto", but it always shows you scroll bars, even when the content is
+                not too big. (This one is pretty rarely used, in my experience.)
+              </ul>
+            </dd>
+
+            <dt>Good Fences Make Good Neighbors</dt>
+            <dd>
+              These "boxes" that we're making are actually more-or-less invisible.
+              You can tell they're there, because (for example) if you make a 
+              block that's narrow you can see that the content is narrow.
+              (<a href='http://jsfiddle.net/Pointy/sCC5k/'>Here is a jsfiddle</a> with a narrow
+              block for you to look at. It should be pretty obvious.)
+              <p>
+              Very often, it's nice to have some way to visually set off the
+              inline content from the rest of the page.
+              On real web pages, there are blocks of content all over the place.
+              If it was all just black text on a white background, it'd be kind-of
+              confusing.
+              <p>
+              How can we set off one block from another? Well, there are
+              several ways:
+              <ul>
+                <li>The box could have a line around it
+                <li>The box could be a different color
+                <li>The box could be pushed away from other boxes
+              </ul>
+              CSS provides us with all sorts of tools to do that kind of thing.
+              <p>
+              The first thing we'll look at is how to draw a line around a box.
+              In the HTML/CSS world, those lines are called
+              <span class='terminology'>borders</span>.
+              In CSS, you can create a rule to put a border around a box
+              like this:
+              <code>
+                div.with-border {
+                  border: 1px;
+                }
+              </code>
+              The CSS property "border" is actually a short cut for several other,
+              more specific properties, <span class='code'>border-width</span>,
+              <span class='code'>border-color</span>, and
+              <span class='code'>border-style</span>.
+              The assumed value of border-width is 0, so boxes have no border
+              around them by default.
+              That CSS for the "with-border" elements sets the "border-width"
+              to 1 pixel. The color is assumed to be black, and the "style
+              is assumed to be "solid."  The only really useful values of
+              "border-style" are "solid" and "none"; there are some others
+              but web browsers don't really do them reliably.
+            </dd>
+          </dl>
+
+          <dt>Red Is Pretty</dt>
+          <dd>
+            We can use CSS to tell the browser what color the lines
+            around a box should be:
+            <code>
+              div.pretty-border {
+                border: 1px red;
+              }
+            </code>
+            The "1px" in the CSS rule makes the border a single pixel
+            thick, and "red" makes the border red.
+            That rule is a shortcut for this:
+            <code>
+              div.pretty-border {
+                border-width: 1px;
+                border-color: red;
+              }
+            </code>
+            Borders are, oddly enough, not considered to be part of the
+            width of the box. If you say a box should be 200 pixels wide,
+            and it also has a 10 pixel wide border on each side, then it
+            will really be 220 pixels wide over all. (That behavior can
+            drive web developers crazy sometimes.)
+          </dd>
+
+          <dt>Give Me Room, Lots Of Room</dt>
+          <dd>
+            Boxes with borders can look pretty cramped, because the browser
+            will run inline content right up to the very edge.
+            To keep the inline content away from the edge, you can 
+            add <span class='terminology'>padding</span> to the block
+            with some CSS.  Telling the browser to add padding means
+            that it will leave more empty space between the edges of
+            your inline content and the box edge.
+            <code>
+              div.pretty-border {
+                border: 1px red;
+                padding: 3px 3px 3px 3px;
+              }
+            </code>
+            Those four separate measurements for the padding are
+            for the top, the right side, the bottom, and the left
+            side of the box, in that order. (That's a common thing
+            in CSS rules like this one.)
+            <p>
+            You can try adding a border and some padding to that
+            <a href='http://jsfiddle.net/Pointy/sCC5k/'>weird story about the mouse</a>
+            if you want.
+          <dd>
+          
+          <dt>Box To Box</dt>
+          <dd>
+            Padding lets you keep stuff inside a box from getting too
+            close to the edges. Outside the box, you might want to keep
+            boxes from bumping right up against each other. To do that,
+            you can give a block element a <span class='terminology'>margin</span>.
+            Margins are like padding, but they're outside the border of the
+            box instead of inside.
+            <code>
+              div.dont-touch-me {
+                margin: 10px 5px 10px 5px;
+              }
+            </code>
+            That CSS rule sets up a margin of 10 pixels on the top and bottom
+            of the box, and 5 pixels on the side. (The side?  Wait a sec - don't
+            boxes pile on top of each other? Where does stuff on the side come
+            from?  We'll see!)
+          </dd>
+
+          <dt>Round Corners</dt>
+          <dd>
+            Rounding off the corners of our boxes makes them, well, rounder.
+            In CSS we can use the "border-radius" property to make corners
+            round.  The "roundness" is set by giving the size of a circle's
+            radius. A big radius means a big circle, and a small radius means
+            a small circle.
+            <code>
+              div.rounded {
+                border-radius: 5px;
+              }
+            </code>
+          </dd>
+
+          <dt>And Now For Something Completely Different</dt>
+          <dd>
+            Last time we did some fooling around with <span class='code'>button</span>
+            elements. We wrote some JavaScript code to respond to "click" events
+            on the button.
+            <p>
+            This time we're going to talk about a couple of other events, "mouseenter"
+            and "mouseleave".
+            Those happen when you move your mouse around and it goes over (or away from)
+            some element on the page.
+            <p>
+            Here's a fun effect we can put together.  You see this sometimes on websites
+            that are showing you stuff they want you to buy.  We're going to make boxes
+            get "swollen borders" but we'll do it in such a way that they won't shift
+            around on the page. The trick is this: we'll give some boxes a thin border,
+            and also some margin and some padding.  Then, when we detect a "mouseover"
+            event, we can make the border a little fatter and the padding 
+            a little smaller. That way, the total size of padding plus margin plus border
+            will be the same as when the mouse is far away. (This looks a lot cooler
+            than it sounds.)
+            <p>
+            We'll do this with some JavaScript assisted by some CSS, just like when we did our button clicker. 
+            The main differences are this:
+            <ol>
+              <li>Before, we used element "id" values to find them. Here, we'll use
+              a class. That way, it will be easy to do the same thing to a bunch of
+              elements. The class name I used in the example is "tricky".
+              <li>There are two events to handle, not just one.
+            </ol>
+            This is what our JavaScript will look like:
+            <code>
+              $('div.tricky').mouseenter(function() {
+                $(this).addClass('moused');
+              });
+              $('div.tricky').mouseleave(function() {
+                $(this).removeClass('moused');
+              });
+            </code>
+            Another thing thats new is that word "this". Last time, we always passed
+            a quoted CSS selector. Here, the word "this" has a very special meaning
+            in JavaScript, and in particular with our handy library jQuery. Inside
+            a function that's used for browser events, like our little functions here,
+            the word "this" means, "the element that's involved with the event". Thus,
+            what we do is tell jQuery that we want to add (or remove) a class from the
+            element that the event happened to.
+            <p>
+            <a href='http://jsfiddle.net/Pointy/b8FPh/1/'>Here is a pre-made jsfiddle</a>
+            with some sample content and the CSS all ready to go.
+            <p>
+            Some other things to think about:
+            <ul>
+              <li>Could you make the boxes more or less round when the mouse
+              moves over an element?
+              <li>Can you change the color of the border too?
+              <li>What if you wanted a different color for each of the elements?
+            </ul>
+          </dd>
+        </section>
+      </div>
+    </div>
+
+    <footer>
+
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.3.min.js"><\/script>')</script>
+
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script defer src="js/plugins.js"></script>
+  <script defer src="js/script.js"></script>
+  <script defer src="js/wallflower-0.4.js"></script>
+  <!-- end scripts-->
+
+	
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+  
+</body>
+</html>
