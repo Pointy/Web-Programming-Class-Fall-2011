@@ -1,0 +1,364 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Web Programming</title>
+  <meta name="description" content="Friday Co-Op Web Programming, Fall 2011">
+  <meta name="author" content="Mike McNally emmecinque@gmail.com">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <link href='http://fonts.googleapis.com/css?family=UnifrakturCook:700|Numans|Aldrich|Short+Stack' rel='stylesheet' type='text/css'> 
+
+  <!-- CSS: implied media=all -->
+  <!-- CSS concatenated and minified via ant build script-->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/1140.css">
+  <link rel="stylesheet" href="css/1140_ie.css">
+  <link rel="stylesheet" href="css/by_media.css">
+  <!-- end CSS-->
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="js/modernizr-2.0.6.min.js"></script>
+</head>
+
+<body class='class-page'>
+
+  <div id="container" class='container'>
+    <header class='row'>
+      <div class='seven-wide col'>
+        <div style='padding: 10px'>
+          <h1 style='font-size: 295%;' class=''>Secrets of</h1>
+          <h1 style='font-size: 340%; padding-left: 50px' class=''>Web Programming</h1>
+        </div>
+      </div>
+      <div class='five-wide col info'>
+        <div style='padding: 10px'>
+          Friday Co-Op<br>
+          Fall 2011<br>
+          <a href='../index.html' title='Click to go back to the main scary page'>Main Page</a>
+        </div>
+      </div>
+    </header>
+
+    <div id="main" role="main" class='row'>
+      <div class='twelve-wide col'>
+        <section class='content'>
+          <h1>More And Better JavaScript Magic</h1>
+          <dl>
+            <dt>Review</dt>
+            <dd>
+              This week we'll expand our JavaScript skills with some
+              really cool capabilities that jQuery provides for us.
+              First, recall that last week I went on and on about
+              boxes again, and we learned about box borders, padding,
+              and margin. We played with curved corners on boxes,
+              and we used some JavaScript to add and remove classes
+              from elements in response to mouse movements.
+            </dd>
+
+            <dt>Quick Note</dt>
+            <dd>
+              Something that I didn't manage to point out very clearly
+              last week is a really powerful aspect of using jQuery
+              the way we're using it.  Recall that I wrote some
+              JavaScript code that started with:
+
+              <code>
+                $("div.tricky").mouseenter(function() {
+                  // ... stuff ... this is called a
+                  // "comment" by the way
+                });
+              </code>
+
+              It's important to note that by using that CSS-style selector
+              ("div.tricky") we told the browser, "Find all of the div
+              elements that have class 'tricky' and do this thing."  (And
+              "this thing" was to set up an event handler for the "mouseenter"
+              event.)
+              That's a great feature and we're going to explore it some
+              more this week.
+            </dd>
+
+            <dt>What Can JavaScript Do?</dt>
+            <dd>
+              We've seen already that we can write JavaScript code that
+              tells the browser to make changes to parts of our HTML code
+              (which we usually refer to as "the document").
+              We'll eventually see that JavaScript (with help from jQuery)
+              we can do almost anything we want: change elements, add new elements,
+              and remove elements.
+              <p>
+              For now, however, we're going to concentrate on the more
+              general case of what we've already done.  Recall that in
+              our projects so far we've affected elements by changing the
+              "class" attribute:
+              <code>
+                $(this).addClass("something");
+              </code>
+              (Remember "this" from last time?  In an event handler, that
+              always is a shortcut for the element where the event happened.)
+              <p>
+              What we've done with JavaScript code like that is alter
+              the value of "class" attributes on our elements. In other
+              words, what happens when we do that is that our element
+              that started off like this:
+              <code>
+                &lt;div class="tricky"&gt;
+                  Please buy this kitten ...
+                &lt;/div&gt;
+              </code>
+              is effectively changed so that it looks like this:
+              <code>
+                &lt;div class="tricky something"&gt;
+                  Please buy this kitten ...
+                &lt;/div&gt;
+              </code>
+              Now, it's not really changed in any sort of permanent way.
+              Instead, what's changing is the web browser's internal
+              "map" of the whole document, which is something that people
+              call "the DOM" (Document Object Model).  We don't have to
+              worry too much about the specific details of how the DOM
+              looks or works because, mostly, jQuery will make that pretty
+              easy for us. (It's worth learning someday though, if you're
+              really interested in how stuff works.)
+              <p>
+              Thus, what we've been doing is using a jQuery feature to
+              make changes to the "class" attribute value on selected
+              elements in our document.
+            </dd>
+
+            <dt>Doing It In Style</dt>
+            <dd>
+              So far we've used the "class" attribute as a way to tie
+              together our HTML code and our CSS code (and, for that 
+              matter, our JavaScript code too!).  That's a very
+              important, I'd say even fundamental, way of doing things
+              in web software.
+              <p>
+              If you think for a second about what it might be like to
+              have to manage a really big web site, with lots and lots
+              of HTML pages and lots of corresponding CSS, you might
+              start to wonder how anybody keeps track of it all.
+              Well that's a great thing to wonder about because it turns
+              out to be a really hard part of working with web software
+              (and any kind of software, really).  One aspect of this
+              in web software is that the use of those class names
+              to control appearance can get kind-of messy once we've
+              got a huge amount of HTML to worry about.  At some
+              point the number of separate little rules like this:
+              <code>
+                div.tricky { background-color: orange; }
+              </code>
+              starts to get big.  It's a great mechanism for setting up
+              the more "standard" or often-repeated parts of the web
+              site (say, the titles on every page, the way paragraphs
+              should look in ordinary text, borders around certain kinds
+              of content, and so on).  However it's very common for there
+              to be special little details that only happen in one or
+              two places throughout all the HTML.
+              <p>
+              For this reason, web software developers have a choice
+              for where to keep the bits and pieces of CSS properties.
+              The way we've been doing it involves CSS separated out
+              into a sort-of world of its own.  The other choice is
+              to use another HTML attribute: <span class='code'>style</span>.
+              The style attribute can be used with any HTML tag.
+              The value of the style attribute should look like the
+              body (the part between "{" and "}") of a CSS rule:
+              <code>
+                &lt;div class='tricky' style='width: 200px; border-color: green'&gt;
+                  Please buy this kitten ...
+                &lt;/div&gt;
+              </code>
+              You can think of the style attribute as a way to create
+              a CSS rule that applies uniquely to that particular element
+              and no others. In the strange and wonderful way that CSS
+              rules are applied to elements, this special unique rule
+              taken from the style attribute is considered the most
+              important.  Setting a property in the style attribute 
+              will override any other setting that might come from 
+              an ordinary CSS rule like the ones we've been using so far.
+            </dd>
+
+            <dt>JavaScript, jQuery, and Style</dt>
+            <dd>
+              Well as you might have guessed, JavaScript and jQuery make
+              it easy for us to fool around with the value of style
+              attributes on our HTML elements, just like we can fool
+              around with the value of class attributes.
+              When using jQuery, the simplest and easiest way to 
+              do this is with a jQuery function called "css":
+              <code>
+                $('div.tricky').mouseenter(function() {
+                  $(this).css({
+                    "background-color": "red",
+                    "border-width": "5px"
+                  });
+                });
+              </code>
+              Note that our CSS code in the middle of that JavaScript
+              code doesn't look exactly like "real" CSS.  That's because
+              it isn't real CSS &mdash; it's JavaScript. It looks
+              almost the same, but because there simply is no way to
+              get the web browser to understand that we want a blob of
+              CSS in the middle of a bigger blob of JavaScript, we
+              have to make do.  Thus, the differences are as follows:
+              <ul>
+                <li>The CSS property names and values have to be quoted.
+                <li>Instead of semi-colons (";"), the property/value settings
+                are separated by commas (","), but there's no comma after
+                the last one.
+              </ul>
+              It's sort-of regrettable, but honestly you get used to
+              it pretty quickly.
+            </dd>
+
+            <dt>A Family of Handy Attributes</dt>
+            <dd>
+              Finally I want to mention a "family" of attributes
+              that are especially useful from JavaScript.
+              I use the word "family" because it's not just one
+              particular attribute, but an essentially infinite
+              set of attributes that all kind-of look the same.
+              These attributes are called "data" attributes,
+              and they look like this:
+              <code>
+                &lt;div data-favorite-color="red"&gt;
+                  Please buy this kitten ...
+                &lt;/div&gt;
+              </code>
+              Now if all you've got is HTML and CSS, then those
+              attributes really won't do you any good at all.
+              But when you throw JavaScript into the mix, then
+              they provide a way of communicating any sort if
+              information you want between HTML and JavaScript.
+              It's like being able to make up your very own
+              custom attributes.  They mean nothing at all
+              to the browser except by way of whatever your 
+              JavaScript code says they should mean.
+            </dd>
+
+            <dt>Things To Do</dt>
+            <dd>
+              <a href='http://jsfiddle.net/Pointy/b8FPh/3/'>Here is this week's jsfiddle.</a>
+              This is just a variation on what we did last time, with
+              a few more CSS goodies thrown in.  What we're going
+              to do is modify our "mouseenter" and "mouseleave"
+              event handlers in two ways:
+              <ol>
+                <li>Instead of adding/removing class names, we're going
+                to change the appearance by directly updating the style
+                attribute of elements the mouse moves over.
+                <li>We're going to use a data attribute to let each
+                of the HTML elements involved tell us the color to make
+                the border.
+              </ol>
+              To do that, we'll use this JavaScript code:
+              <code>
+                $('div.tricky').mouseenter(function() {
+                  var newBorderColor;
+
+                  newBorderColor = $(this).data('favorite-color') || 'black';
+                  
+                  $(this).css({
+                    'margin': '10px',
+                    'padding': '5px',
+                    'border-width': 11px,
+                    'border-color': newBorderColor
+                  });
+                });
+                $('div.tricky').mouseleave(function() {
+                  $(this).css({
+                    'margin': '', 'padding': '', 'border-width': '', 'border-color': ''
+                  });
+                });
+              </code>
+              There are some important new things in that code:
+              <ul>
+                <li>Note the use of this ".css()" thing to update
+                the style on the affected element (this)
+                <li>The first line of the "mouseenter" event handler
+                is new: that's called a <span class='terminology'>variable declaration</span>.
+                We'll talk more about those, but suffice to say that
+                we're telling JavaScript that we want to use that
+                name ("newBorderColor") to mean something in our 
+                code.
+                <li>The next thing we see looks like a little bit
+                of algebra, sort-of.  That "=" sign does not, however,
+                mean that we're telling JavaScript that those two things
+                are "equal".  Instead, we're telling it that we want it
+                to make them equal by having that name "newBorderColor"
+                be whatever that stuff on the other side of "=" is.
+                <li>Now, that stuff on the right side of the "=" is
+                how we get at our "data-favorite-color" attribute.
+                We start with "$(this)" again, and use the jQuery
+                "data()" function (thankfully the jQuery people are
+                pretty good about making up function names).  Note 
+                that we don't have to prefix our name with "data-".
+                The very last part, starting with "||", means that
+                if there's no such data attribute on the element to
+                just use "black" as the color name.
+              </ul>
+              What other sorts of things can you think of that "data-" attributes
+              might be good for?
+              <p>
+              Did you notice that our boxes are sitting next to each other?
+              Can you figure out from the CSS how I did that?
+              <p>
+              Here's a deep philosophical question: how does one know when
+              to use "addClass" and "removeClass" to change appearance versus
+              using our new friend the "css" function?
+            </dd>
+          </dl>
+        </section>
+      </div>
+    </div>
+
+    <footer>
+
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.3.min.js"><\/script>')</script>
+
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script defer src="js/plugins.js"></script>
+  <script defer src="js/script.js"></script>
+  <script defer src="js/wallflower-0.4.js"></script>
+  <!-- end scripts-->
+
+	
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+  
+</body>
+</html>
+
