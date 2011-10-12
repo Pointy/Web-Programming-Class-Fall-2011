@@ -1,0 +1,374 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Web Programming</title>
+  <meta name="description" content="Friday Co-Op Web Programming, Fall 2011">
+  <meta name="author" content="Mike McNally emmecinque@gmail.com">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <link href='http://fonts.googleapis.com/css?family=UnifrakturCook:700|Numans|Aldrich|Short+Stack' rel='stylesheet' type='text/css'> 
+
+  <!-- CSS: implied media=all -->
+  <!-- CSS concatenated and minified via ant build script-->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/1140.css">
+  <link rel="stylesheet" href="css/1140_ie.css">
+  <link rel="stylesheet" href="css/by_media.css">
+  <!-- end CSS-->
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="js/modernizr-2.0.6.min.js"></script>
+</head>
+
+<body class='class-page'>
+
+  <div id="container" class='container'>
+    <header class='row'>
+      <div class='seven-wide col'>
+        <div style='padding: 10px'>
+          <h1 style='font-size: 295%;' class=''>Secrets of</h1>
+          <h1 style='font-size: 340%; padding-left: 50px' class=''>Web Programming</h1>
+        </div>
+      </div>
+      <div class='five-wide col info'>
+        <div style='padding: 10px'>
+          Friday Co-Op<br>
+          Fall 2011<br>
+          <a href='../index.html' title='Click to go back to the main scary page'>Main Page</a>
+        </div>
+      </div>
+    </header>
+
+    <div id="main" role="main" class='row'>
+      <div class='twelve-wide col'>
+        <section class='content'>
+          <h1>More About Functions</h1>
+          <dl>
+            <dt>Review</dt>
+            <dd>
+              Last week we played around with CSS manipulation
+              directly from JavaScript.
+              We also looked at the "style" attribute in HTML,
+              as well as the family of "data" attributes.
+              We saw how data attributes can be used to communicate
+              from HTML to JavaScript.
+            </dd>
+            
+            <dt>Functions</dt>
+            <dd>
+              In all the JavaScript we've done so far, we've used
+              <span class='terminology'>functions</span>.
+              The word function comes from math, but like many
+              other words the meaning is not exactly the same
+              as it is in a pure mathematical context.
+              It's close, however. A function is just a precise
+              description of a procedure for doing something.
+              <p>
+              The fact that JavaScript has functions is one of
+              the things that make it more "powerful" than HTML
+              and CSS.  JavaScript lets you create functions to
+              describe all sorts of different processes. It's even
+              possible to write functions that do things to other
+              functions.
+              <p>
+              There are some general things we can say about functions
+              in JavaScript:
+              <ul>
+                <li>Functions can have names, just like variables, but
+                they don't have to have names.  A function without a
+                name is sometimes called an "anonymous" function.
+                <li>Functions can accept parameters, which are values
+                that may affect the way a procedure happens.
+                <li>Functions can "return" a value (but they don't
+                have to).
+              </ul>
+              We'll talk about what all that stuff means.
+              <p>
+              Functions in JavaScript are very powerful things indeed,
+              and the way they work is one of the more unique things
+              about JavaScript.
+            </dd>
+
+            <dt>The Life Of A Function</dt>
+            <dd>
+              One of the interesting things about functions in JavaScript
+              is that there are two ways of creating them. The two ways
+              look almost exactly the same, but the difference is kind-of
+              important.
+              <p>
+              The first way of creating a function is called a function
+              <span class='terminology'>declaration</span>.  A function
+              declaration looks like this:
+              <code>
+                function addTwoNumbers(a, b) {
+                  return a + b;
+                }
+              </code>
+              That creates a function with a name ("addTwoNumbers"). The name
+              of the function can be used now to refer to that particular procedure.
+              It's very much like the way we used "var" to declare a name to
+              use, like we did last week:
+              <code>
+                var favoriteColor;
+              </code>
+              Our "addTwoNumbers" function is set up such that it understands
+              two parameters, and it calls them "a" and "b".  It's as if "a"
+              and "b" were declared with "var" inside of the function. The
+              function is written to add those two parameters together (that's
+              what the "+" sign means) and "return" the result.
+              <p>
+              The other way of creating a function is something we've already
+              done several times. Again, it looks very much like the function
+              declaration statement above, but it's different in a subtle way:
+              <code>
+                var addTwoNumbers;
+
+                addTwoNumbers = function(a, b) {
+                  return a + b;
+                };
+              </code>
+              In the above example, a function is created as a value on the right
+              side of an "=" sign. It's used to set the value of a declared variable,
+              which I've also called "addTwoNumbers".  In these two samples, the
+              effect of creating our function is almost exactly the same between
+              the two!  Not quite the same, but almost, and the
+              differences are pretty subtle and generally unimportant. This way of
+              creating a function is called a function "expression".
+              <p>
+              Once you've got a function, the next thing to do is "call" the function.
+              (Sometimes programmers use the word "invoke" instead of "call"; it's up
+              to you.)
+              To call a function means that you're telling it to carry out the procedure
+              it describes.  Calling a function that expects to be given parameters
+              requires that you supply some values for it to use:
+              <code>
+                var answer = addTwoNumbers(5, 6);
+              </code>
+              The variable "answer" will be set to the result of calling our "addTwoNumbers"
+              function.  
+              <p>
+              The second way of creating a function &mdash; with function expressions &mdash; can get pretty interesting,
+              and we've actually seen that:
+              <code>
+                $('div.tricky').mouseover(function() {
+                  // stuff
+                });
+              </code>
+              Remember how we set up our event handlers?  We were actually calling a function (called
+              "mouseover" - we'll talk about that "." at some point) and passing it a function
+              expression as a parameter!  This, this right here, is what makes JavaScript a lot
+              of fun. Functions can play the role of values, and that's truly awesome. (You may
+              have to trust me on that for now.)
+            </dd>
+
+            <dt>Time Travel</dt>
+            <dd>
+              Browsers (aren't they cool?) let you tell them to do something in the future.
+              The way they do this is by letting you give them a function and an amount of time
+              to wait. They sort-of "watch the clock" for you, and when the time comes, they
+              simply call your function.  This is all done with &mdash; you guessed it &mdash;
+              a function that's built in to the browser.  The function is called "setTimeout":
+              <code>
+                setTimeout(function() {
+                  $('div.cute-kitten').css({
+                    'border-color': 'black',
+                    'border-width': '5px'
+                  });
+                }, 1000);
+              </code>
+              There you see a little function (that, in turn calls a couple of other functions!)
+              being passed in as the first parameter to "setTimeout".  The second parameter, 1000,
+              means that we want the browser to wait 1000 milliseconds &mdash; 1000 thousandths of
+              a second; how long is that? &mdash; before calling the function. (Though the clock
+              inside the computer is pretty accurate, the browser doesn't really guarantee that 
+              the timer will go off in exactly 1000 milliseconds. It's usually pretty close however.)
+              <p>
+              The function you pass to "setTimeout" does not have to be an anonymous function like that,
+              of course. This would work too:
+              <code>
+                function borderKitten() {
+                  $('div.cute-kitten').css({
+                    'border-color': 'black',
+                    'border-width': '5px'
+                  });
+                }
+
+                setTimeout(borderKitten, 1000);
+              </code>
+              In that version I used a function declaration to create a function called "borderKitten",
+              which does exactly the same thing as the anonymous function in the first example.
+              Then the code calls "setTimout" with the name of the function as the first parameter.
+              Using a function name like that without parenthesis does not call the function, it
+              just means that the function with that name is the value to pass. The effect, as far as
+              "setTimeout" is concerned, is the same. In fact, a function like "setTimeout" really has
+              no idea whether the parameter you pass is a function created with a function declaration
+              or a function expression.  It also does not care, because it doesn't matter!
+            </dd>
+
+            <dt>Things To Do</dt>
+            <dd>
+              <a target=_blank href=http://jsfiddle.net/Pointy/Jtj9j/>Here is this weeks jsfiddle link.</a>
+              There, you'll see HTML like this:
+              <code>
+                &lt;div class='kitten-countdown' data-kitten-size='220/220'&gt;
+                  &lt;button class='kitten-button'&gt;Click Me&lt;/button&gt;
+                  &lt;div class='surprise'&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              </code>
+              That HTML will make us a "kitten button".  The button will
+              say "Click Me" because everybody loves clicking buttons like
+              that. Note also that empty "div" element with the "surprise"
+              class.  That's where we'll show the kitten.
+              <p>
+              We're going to use
+              JavaScript to make the button start a series of timed events,
+              which will end with a kitten. We won't be starting just one
+              timer, because a kitten deserves a good countdown. Thus, we
+              want to show how long it's going to be before the kitten shows
+              up.
+              <p>
+              To do that, we'll need two things:
+              <ol>
+                <li>We need a function to show a countdown, before it's
+                time for the kitten. (We also need to know how to count ...)
+                <li>We need a function to announce that it's time for a kitten.
+                <li>We need a function to actually show a kitten!
+              </ol>
+              <p>
+              We're going to do all the work inside a "click" event handler on 
+              our button.  Here's the outer shell where we'll be putting all
+              the timer functions:
+              <code>
+                $('div.kitten-button').click(function() {
+                  var $container = $(this).closest('.kitten-countdown');
+                  var $surprise = $container.find('.surprise');
+                  var kittenUrl = 
+                    'http://placekitten.com/' + $container.data('kitten-size');
+
+                  // cool stuff goes here
+                });
+              </code>
+              Notes:
+              <ul>
+                <li>The "$container" variable will be set by staring with "this" (the
+                button that somebody clicked) and then going "up" to find the outer "kitten-countdown"
+                div element.
+                <li>The "$surprise" variable will be that empty div element with class "surprise".
+                <li>The "kittenUrl" variable uses the "data" attribute, "data-kitten-size",
+                to build an image URL.
+              </ul>
+              The counting part is going to be about the most interesting part
+              here.  To count down a 10 second count, we just need a JavaScript
+              variable to keep track of what number we're on. Then, our countdown
+              function will just need to subtract one every time. We'll also need
+              some other variables
+              declaration will look like this:
+              <code>
+                var counter = 10;
+              </code>
+              And our countdown function:
+              <code>
+                function countdown() {
+                    $surprise.text(counter);
+                    
+                    counter -= 1;
+
+                    setTimeout(counter > 0 ? countdown : announce, 1000);
+                }
+              </code>
+              We're using a new jQuery function here, "text".  What that does
+              is update the actual contents of the element involved, which here
+              is that empty div. By calling "text" with the counter, we'll be
+              putting a number in the div.  What number? Well, it's how many
+              seconds are left until kitten time.
+              <p>
+              See that "?" thing in the function call to "setTimeout"?  What 
+              that does is let us make a decision.  If the counter, after subtracting
+              one, is still bigger than zero, then we're still counting down so the
+              next timeout should still be our countdown function. But when the 
+              counter is zero, then it's time to announce the kitten, so we'll 
+              set up a different function:
+              <code>
+                function announce() {
+                  $surprise.text("KITTEN");
+                  setTimeout(kitten, 1000);
+                }
+              </code>
+              That function's a lot simpler. It just makes the announcement
+              (by putting the word "KITTEN" into the "surprise" div) and sets
+              up the final timeout:
+              <code>
+                function kitten() {
+                  $surprise.html($('<img>', {
+                    'src': kittenUrl
+                  }));
+                }
+              </code>
+              Here we used yet another new jQuery function, "html".  It's kind-of like
+              "text", but instead of just, well, text, we can actually add new HTML
+              elements. We'll add an "img" tag with a "src" attribute that's our kitten
+              URL.
+              <p>
+              Now all that stuff together will go inside our event handler function, along
+              with one last &mdash; but very important &mdash; step: we need to start
+              the whole sequence of timers!
+              <code>
+                setTimeout(countdown, 1000);
+              </code>
+              (We could just call countdown directly, but it's a little more dramatic
+              if it starts a second after the button click.)
+            </dd>
+          </dl>
+        </section>
+      </div>
+    </div>
+
+    <footer>
+
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.3.min.js"><\/script>')</script>
+
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script defer src="js/plugins.js"></script>
+  <script defer src="js/script.js"></script>
+  <script defer src="js/wallflower-0.4.js"></script>
+  <!-- end scripts-->
+
+	
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+  
+</body>
+</html>
