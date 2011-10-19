@@ -326,6 +326,8 @@ header h1 { margin: 0; }
 .twelve-wide { width: 100%; max-width: 1008px; }
 
 
+td.term { width: 10em; font-family: 'Aldrich', sans-serif; font-size: larger; text-align: center; }
+
 
 
 
