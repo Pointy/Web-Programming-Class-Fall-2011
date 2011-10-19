@@ -1,0 +1,382 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Web Programming</title>
+  <meta name="description" content="Friday Co-Op Web Programming, Fall 2011">
+  <meta name="author" content="Mike McNally emmecinque@gmail.com">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <link href='http://fonts.googleapis.com/css?family=UnifrakturCook:700|Numans|Aldrich|Short+Stack' rel='stylesheet' type='text/css'> 
+
+  <!-- CSS: implied media=all -->
+  <!-- CSS concatenated and minified via ant build script-->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/1140.css">
+  <link rel="stylesheet" href="css/1140_ie.css">
+  <link rel="stylesheet" href="css/by_media.css">
+  <!-- end CSS-->
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="js/modernizr-2.0.6.min.js"></script>
+</head>
+
+<body class='class-page'>
+
+  <div id="container" class='container'>
+    <header class='row'>
+      <div class='seven-wide col'>
+        <div style='padding: 10px'>
+          <h1 style='font-size: 295%;' class=''>Secrets of</h1>
+          <h1 style='font-size: 340%; padding-left: 50px' class=''>Web Programming</h1>
+        </div>
+      </div>
+      <div class='five-wide col info'>
+        <div style='padding: 10px'>
+          Friday Co-Op<br>
+          Fall 2011<br>
+          <a href='../index.html' title='Click to go back to the main scary page'>Main Page</a>
+        </div>
+      </div>
+    </header>
+
+    <div id="main" role="main" class='row'>
+      <div class='twelve-wide col'>
+        <section class='content'>
+          <h1>Math In JavaScript</h1>
+          <dl>
+            <dt>Review</dt>
+            <dd>
+              Last week we went over some of the strange and wonderful
+              properties of functions.
+              We saw that functions first have to be "created", and
+              then once they've been created they can be "called."
+              We saw two different ways of creating functions, and
+              we saw how to call them.
+              We also talked about function "parameters" and how to
+              "pass" them when calling a function.
+            </dd>
+            
+            <dt>Math and Expressions</dt>
+            <dd>
+              We'll get back to functions, but first I want to talk
+              about how to get JavaScript to figure things out for
+              us and do some math.
+              Performing arithmetic was one of the things that
+              made people really want to create computers in the first
+              place.  In fact, before there were computers like we
+              have today, the word "computer" was used to describe
+              a person with a particular kind of job: doing arithmetic!
+              (Yes people actually got paid to do arithmetic problems
+              all day long.)
+              <p>
+              The real story of how math is done inside a computer is
+              pretty interesting, but we're going to skip over that
+              and concentrate how JavaScript provides us with a 
+              simple way to tell those electronics in the computer
+              what to do, and to get the answer back to us in a way
+              that's useful.
+              <p>
+              Why do we need to do math in JavaScript?  I mean, if you've
+              ever sat starting at a page of arithmetic problems, I don't
+              have to try very hard to convince you that a machine to do
+              arithmetic is pretty useful. But, that aside, why would
+              something having to do with a web page have to do math?
+              Here are some reasons:
+              <ul>
+                <li>Your web page might just be intended to help people
+                with some sort of math problem, like figuring out how
+                much car payments might be for a new auto loan
+                <li>Your page may have something to do with the calendar
+                or the clock, so you might have to do math with values
+                involving dates and times
+                <li>A web page about cooking might allow calculations for
+                ingredients or cooking times
+                <li>Fancy tricky web pages might use JavaScript to figure
+                out sizes or placements (in other words, math about 
+                pixels and pixel areas)
+                <li>Even fancier web pages might use JavaScript to actually
+                move things around, using math to calculate the position
+                of objects moment by moment
+              </ul>
+              To do math in JavaScript, we'll be looking at:
+              <ul>
+                <li class='terminology'>constants
+                <li class='terminology'>variables
+                <li class='terminology'>operators
+                <li class='terminology'>expressions
+              </ul>
+              We'll also see how functions can help organize complicated
+              math stuff.
+            </dd>
+
+            <dt>Expressing Ourselves</dt>
+            <dd>
+              When we talk about HTML, the main thing about the syntax
+              that's interesting is the <span class='terminology'>tag</span>.
+              When we talk about CSS, the main thing is the <span class='terminology'>rule</span>.
+              Well, in JavaScript, the basic unit of syntax is called a <span class='terminology'>statement</span>.
+              JavaScript has a more elaborate syntax than either HTML or CSS, and so
+              there are several different kinds of statement. We've been playing
+              with statements all along, of course, and we've seen a few different kinds:
+              <ul>
+                <li>The function declaration statement
+                <li>The "return" statement
+              </ul>
+              We've also seen the most common kind of statement in JavaScript,
+              the <span class='terminology'>expression</span> statement.
+              In JavaScript, with one fairly rarely-used exception, every kind
+              of statement that's not an expression statement starts with 
+              some "magic word".  Such special words are usually called
+              "keywords" or "reserved words".  That's the case with the
+              function declaration statement and the return statement, remember?
+              <code>
+                function addTwoNumbers(a, b) {
+                  return a + b;
+                }
+              </code>
+              In that sample, there's a function declaration statement and, inside
+              the function, a return statement.
+              <p>
+              It's important to keep the terminology straight here as regards the
+              word "expression": every expression statement consists of an expression,
+              but not every expression is in an expression statement. For example,
+              that return statement above has an expression in it: "a + b".
+              <p>
+            </dd>
+
+            <dt>Expressions</dt>
+            <dd>
+              An <span class='terminology'>expression</span>
+              is an algebra-like arrangement of <span class='terminology'>values</span>
+              and <span class='terminology'>operators</span>.
+              Values can be simple numbers, or they can be symbolic names for
+              numbers, like in algebra.
+              We've seen how to use such symbols already: the variable declaration
+              statement:
+              <code>
+                var x = 2;
+              </code>
+              That statement makes it possible for us to use the symbol "x" to
+              refer to the value 2.
+              <p>
+              Operators are funny symbols you're used to like "+" and "-". They
+              determine exactly what kind of mathematical operations to carry out
+              among the values in an expression.
+              <p>
+              Now the rules for how values and operators are arranged more-or-less follow
+              the rules of ordinary arithmetic and algebra.
+              However, even though expressions look like ordinary algebra, things
+              don't work exactly the same way all the time.
+              Also, for strange historical reasons, the symbols you're used to using
+              are not all available to us among the letters and symbols we can type on
+              ordinary keyboards. There's "+" and "-" and "=", but for multiplication
+              we have to use "*" (an asterisk) and for division we use "/" (a forward-leaning
+              slash; not "\"!).
+              <p>
+              (Note that these are the rules for JavaScript. Some languages use slightly
+              different symbols, and some make distinctions about different variations
+              on the basic operations you know.)
+              <p>
+              The most important thing about expressions in JavaScript that's different
+              from expressions in ordinary arithmetic or algebra is the meaning of "=".
+              When you're doing a math problem, the "=" is usually used to make an
+              assertion of the way things are.  Thus, in algebra:
+              <code>
+                x = y + 2
+              </code>
+              that expression means, "the value of x is 2 more than the value of y".
+              In JavaScript, on the other hand, the "=" sign makes something happen. In
+              particular, what it means is, "force the variable 'x' to contain
+              the value you get by adding 2 to the current value of the variable 'y'."
+              That's a very important difference!  That operation is called an
+              <span class='terminology'>assignment</span>, and an expression statement
+              that involves some math on the right-hand side of "=" and a variable on
+              the left-hand side is sometimes called an assignment statement. (It's
+              still an expression statement however.)  The "=" operator is itself called
+              an <span class='terminology'>assignment operator</span>.
+              <p>
+              In JavaScript, the only thing that can be on the left side of an "=" is
+              a thing that can hold a value. A variable is, so far, what we've seen that
+              fits that description, but we'll see that there are others too.
+              <p>
+              The same variable can appear on the left side of "=" many times in a single
+              function.  That's OK &mdash; in JavaScript. Some programming languages have
+              variables that can't change values (which makes the use of the word "variable"
+              seem a little funny, if you think about it).
+              <p>
+              Hey we've seen another way to make a variable take on the value of some expression.
+              Can you think of what it was?
+            </dd>
+
+            <dt>Getting Answers</dt>
+            <dd>
+              The right-hand side of an assignment is where the good stuff happens, of course.
+              That's were you tell JavaScript how to do some arithmetic for you.
+              The operators available to you are:
+              <table>
+                <tr><td>+</td><td>Add what's on the left to what's on the right</td></tr>
+                <tr><td>-</td><td>Subtract what's on the right from what's on the left</td></tr>
+                <tr><td>*</td><td>Multiply what's on the left by what's on the right</td></tr>
+                <tr><td>/</td><td>Divide what's on the left by what's on the right</td></tr>
+              </table>
+              Note that, just like in arithmetic and algebra, the subtraction and division
+              operators have a "direction", while addition and multiplication don't.
+              <p>
+              Now, what can go on the left and right sides of those operators?  Well:
+              <ul>
+                <li>plain values, like 2 or 174 or 0.00177 (called "constants")
+                <li>variable names, like x or myFavoriteNumber
+                <li>other expressions
+              </ul>
+              Now that last one seems odd, but in fact it's just like arithmetic.
+              The same rules you're familiar with about how to understand an expression
+              with lots of mixed-up operators and values still apply:
+              <ul>
+                <li>when there's a mix of multiplications and divisions with additions
+                and subtractions, do the multiplications and divisions first, then 
+                the additions and subtractions;
+                <li>when there's a sequence of the same operator, go left to right;
+                <li>parentheses can be used to make the order of evaluation explicit
+              </ul>
+              Yes, parentheses work (most of the time) just like in arithmetic and
+              algebra, so:
+              <code>
+                x = (y + 2) * z;
+              </code>
+              means, "make 'x' contain the result of multiplying the current value of
+              'z' by 2 more than the current value of 'y'".
+              <p>
+              One other important difference in notation between math and JavaScript
+              is another thing we've seen already. In algebra, you can write a
+              variable name or a number outside parentheses, and that means to
+              multiply.  In JavaScript it means something much, much different. Do
+              you recall what it was?
+              <code>
+                x = addTwoNumbers(5, z);
+              </code>
+              That's right, it's a function call!  Way different.
+            </dd>
+
+            <dt>Things To Do</dt>
+            <dd>
+              <a href='http://jsfiddle.net/Pointy/98EUy/11/' target='_blank'>Here is the not-yet-completed version of this week's project.</a>
+              What we're going to do is put together a really simple calculator page.
+              We're going to cheat a little bit and not bother to make it
+              work like a real calculator, with buttons to click in the actual
+              numbers. Instead we'll use a tag called an "input" tag, which
+              will let us just type numbers in with the keyboard.
+              <p>
+              You'll see in that fiddle that there's a box labeled "A" and one
+              labeled "B". There's also an "Answer", and four buttons for the
+              four math operators we've seen. What the program will do is wait
+              for a "click" on one of those buttons, and then take the numbers
+              in box "A" and box "B" and perform that operation on them.
+              <p>
+              The "skeleton" of our "click" handler looks like this:
+              <code>
+                $('.clickable').click(function() {
+                    var a = $('#A').val() * 1;
+                    var b = $('#B').val() * 1;
+                    var answer = null;
+                    var op = $(this).data('op');
+                    
+                    // cool stuff goes here
+                    
+                    $('#answer').text(answer);
+                    $('#active').text($(this).text());
+                });
+              </code>
+              Things to note:
+              <ul>
+                <li>That ".clickable" selector will select the buttons for "+", "-", etc
+                <li>The variables "a" and "b" are set up to be the current values
+                of the "A" and "B" input elements. (Check the HTML to see that those "id" values
+                were used.)  That multiplication by 1 is a trick to force the values to be
+                numbers; more about that next time!
+                <li>The variable "answer" is initialized to "null", which is a special
+                "not a value" value in JavaScript
+                <li>The "op" variable will contain the value of the "data-op" attribute on
+                the clicked button
+              </ul>
+              Now, what we need to do here is decide, based on the "op", which math operation
+              to do.  Then we need to set the answer to the appropriate value.
+              <p>
+              To do that "cool stuff" we're going to resort to one of the least "pleasant"
+              kinds of statements in JavaScript, the <span class='terminology'>switch<span>
+              statement.  A switch statement is used to make a decision when there are many
+              possible things to do. I won't talk about "switch" too much and next time we'll
+              see an alternative that's almost always better, but for now it'll look like this:
+              <code>
+                switch (op) {
+                case '+':
+                  answer = a + b;
+                  break; // this "break" thing is the unpleasant part btw
+                case '-':
+                  answer = a - b;
+                  break;
+                case '*':
+                  answer = a * b;
+                  break;
+                case '/':
+                  answer = a / b;
+                  break;
+                }
+              </code>
+              Each "case" in the "switch" statement is a possible path to take, based on
+              what the value of the variable "op" happens to be.  Thus, depending on what
+              button gets clicked, the answer will be computed from one of those different
+              expression statements.
+            </dd>
+          </dl>
+        </section>
+      </div>
+    </div>
+
+    <footer>
+
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.3.min.js"><\/script>')</script>
+
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script defer src="js/plugins.js"></script>
+  <script defer src="js/script.js"></script>
+  <script defer src="js/wallflower-0.4.js"></script>
+  <!-- end scripts-->
+
+	
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+  
+</body>
+</html>
