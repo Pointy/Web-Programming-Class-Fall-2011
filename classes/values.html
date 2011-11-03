@@ -1,0 +1,356 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Web Programming</title>
+  <meta name="description" content="Friday Co-Op Web Programming, Fall 2011">
+  <meta name="author" content="Mike McNally emmecinque@gmail.com">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <link href='http://fonts.googleapis.com/css?family=UnifrakturCook:700|Numans|Aldrich|Short+Stack' rel='stylesheet' type='text/css'> 
+
+  <!-- CSS: implied media=all -->
+  <!-- CSS concatenated and minified via ant build script-->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/1140.css">
+  <link rel="stylesheet" href="css/1140_ie.css">
+  <link rel="stylesheet" href="css/by_media.css">
+  <!-- end CSS-->
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="js/modernizr-2.0.6.min.js"></script>
+</head>
+
+<body class='class-page'>
+
+  <div id="container" class='container'>
+    <header class='row'>
+      <div class='seven-wide col'>
+        <div style='padding: 10px'>
+          <h1 style='font-size: 295%;' class=''>Secrets of</h1>
+          <h1 style='font-size: 340%; padding-left: 50px' class=''>Web Programming</h1>
+        </div>
+      </div>
+      <div class='five-wide col info'>
+        <div style='padding: 10px'>
+          Friday Co-Op<br>
+          Fall 2011<br>
+          <a href='../index.html' title='Click to go back to the main scary page'>Main Page</a>
+        </div>
+      </div>
+    </header>
+
+    <div id="main" role="main" class='row'>
+      <div class='twelve-wide col'>
+        <section class='content'>
+          <h1>Values</h1>
+          <dl>
+            <dt>Review</dt>
+            <dd>
+              Last week, we looked at doing math operations in JavaScript.
+              We talked about <span class='terminology'>expressions</span>
+              and how expressions form <span class='terminology'>expression statements</span>.
+              We saw the different <span class='terminology'>operators</span> used
+              to do addition, subtraction, multiplication, and division.
+              This week, we'll look further into what expressions do and
+              the kinds of values they operate upon.
+            </dd>
+            
+            <dt>What is a value?</dt>
+            <dd>
+              When JavaScript "does" an expression, we say that the
+              expression is <span class='terminology'>evaluated</span>.
+              That is, in the assignment expression statement:
+              <code>
+                x = 15 * y;
+              </code>
+              the variable "x" is set to the result of evaluating the
+              expression on the right-hand side of the "=" operator.
+              Such a result is called, in general, a <span class='terminology'>value</span>.
+              <p>
+              We spent last time talking about doing math, which is to say,
+              evaluating numeric expressions. A numeric expression is just
+              one that involves values that are all numbers.  The result of
+              such an expression is also a number.
+              <p>
+              In all the exercises we've done, we've also seen other sorts
+              of values, ones that aren't numbers at all. For example,
+              when we call the jQuery "$" function, we pass in a value
+              that looks like a CSS selector:
+              <code>
+                $('#message').text("Hello Kitty");
+              </code>
+              Recall that the "$" is the name of a function, and so that code
+              is a function call (actually, two function calls, but hold that
+              thought for now).  The parameter passed in to the function &mdash; the CSS selector &mdash;
+              is called a <span class='terminology'>string</span>. A string
+              is just some text; words and punctuation or whatever you want or
+              need for your program. In JavaScript, strings are values, and
+              we can actually make expressions involving strings!
+              <code>
+                x = 'kitty';
+                y = 'hello' + ' ' + x;
+              </code>
+              After those two statements are evaluated, the variable "y" will
+              contain the string "hello kitty".  Yes, that's right: the "+" operator
+              that adds numbers together also "adds" strings together. Of course,
+              the meaning of that is totally different. When you add strings together,
+              it's like you're gluing them end-to-end.
+            </dd>
+
+            <dt>Types of Values</dt>
+            <dd>
+              OK, so now we've seen numbers and strings.  What other kinds of 
+              values are there?  Well, there aren't too many different types
+              of value in JavaScript.  Here's a list of all of them:
+              <ul>
+                <li>numbers
+                <li>strings
+                <li>booleans (true and false)
+                <li>null (a weird "value" that means "nothing")
+                <li>objects
+              </ul>
+              The word "boolean" is taken from the name of a British mathematician,
+              George Boole, who developed the idea of an "algebra" involving just
+              two values (which we call "true" and "false").  Such boolean values
+              are extremely important in all computing, and in JavaScript they're
+              a fundamental way that decisions are made. Having explicit boolean
+              values means that we can "save" the result of checking some condition
+              in a variable, and then "remember" the situation later.
+              <p>
+              The value "null" is a special, odd thing that means, "nothing", or
+              "no value".  If you set a variable to "null" explicitly:
+              <code>
+                x = null;
+              </code>
+              then it's explicitly not got any other value, and "null" can be
+              recognized as meaning exactly that.  It sounds a little goofy but
+              it's also an extremely important notion.
+              <p>
+              And that brings us to "objects".  (Programmers are really good
+              at thinking up variations on the word "thing".) The concept of
+              an "object" is present in many, many popular programming languages,
+              though what it means exactly varies pretty widely.
+              Thankfully (I think) for us, an object in JavaScript is a pretty
+              simple notion, really: it's a container for a set of "properties",
+              each of which can have a value. In most ways, a property of an
+              object is itself like a variable.  Here's what it looks like to
+              make an object in JavaScript:
+              <code>
+                var myObject = {
+                  name: "Thomas",
+                  age: 7,
+                  hairColor: "brown"
+                };
+              </code>
+              That code declares the variable "myObject" and gives it an object
+              for its value. The object (curly braces again! I told you programmers
+              love those) has three properties: "name", "age", and "hairColor".
+              Note that two of the properties have string values, and one is a number.
+              That's OK &mdash; an object can have properties with any kind of value,
+              including other objects!
+              <p>
+              There are two ways of getting at the properties of an object. (There
+              wouldn't be much point to having those properties if we couldn't get
+              the values back!)  The first way uses the "." operator (yes, it's just
+              a dot or period, like at the end of a sentence):
+              <code>
+                var years = myObject.age;
+              </code>
+              The left-hand side of a "." has to be an object (or a variable whose value
+              is an object), and the right-hand side is the name of a property. In
+              that example, then, the variable "years" would be set to 7, which was
+              what we put in the "age" property of "myObject".
+              <p>
+              That way of getting object properties works great when you know exactly
+              what property you want. Sometimes, however, you don't know what property
+              you want until the program actually runs.  For example, inside a "click"
+              handler, you might find a property name by checking a "data-" attribute
+              on the element that was clicked.  In that case, you use a different
+              operator, which looks like this:
+              <code>
+                var propertyName = $(this).data('prop');
+                var value = someObject[propertyName];
+              </code>
+              The square brackets after the object reference ("someObject") will let you
+              use another variable to hold the actual property name to get.  Think for
+              a second about the difference between these two:
+              <code>
+                var firstThing = someObject.propertyName;
+                var otherThing = someObject[propertyName];
+              </code>
+              Note that we could get by if JavaScript only had the second way of getting
+              at properties:
+              <code>
+                var years = myObject["age"];
+              </code>
+              The "." operator is really just a short-cut for that way of getting to
+              properties.
+              <p>
+              Finally, using either kind of property access, it's possible to change
+              the values of object properties and even add new properties:
+              <code>
+                myObject.age = myObject.age + 1; // happy birthday!
+
+                myObject.height = 4.5; // four and 1/2 feet tall
+
+                myObject[someProperty] = 10;
+              </code>
+            </dd>
+
+            <dt>Hey what about functions?</dt>
+            <dd>
+              In our list of value types, one thing you may have noticed was missing:
+              our friend, the function.  Remember that one of the ways a function can
+              be created is as a value:
+              <code>
+                var myFunction = function(a, b) { return a + b; };
+              </code>
+              So why isn't "function" one of the types of values?  Well, it turns out,
+              it is &mdash; because every function is actually an object!  Functions
+              are somewhat special, of course, because they can be "called", as we've
+              seen. But in every other respect, a function is just an object. Functions
+              can have properties, just like objects.
+              <p>
+              Being able to put properties on function objects is pretty cool, but
+              what's much cooler is to be able to make functions be properties of
+              regular, simple objects. By doing that, we can create a "mapping" of
+              names to functions. Does this sound like a familiar problem?
+            </dd>
+
+            <dt>A Quick jQuery Note</dt>
+            <dd>
+              Think about what all our jQuery code has looked like:
+              <code>
+                $('.kitten-something').click(function() {
+                  // ...
+                });
+              </code>
+              We now know what that "." means: it's the way we access a property
+              of an object. So, what's going on here? What can it mean for there to
+              be a "." right after that function call? What does that tell us about
+              the jQuery magic "$" function?
+              <p>
+              Well what's going on is that the jQuery "$" function returns an object!
+              The object is a big blob of properties, most of which have other functions
+              as their values. In particular, things like "click", "text", "html", and
+              so on, all are properties of the object whose values are functions. Thus,
+              when we put a "." after the jQuery function call and then put another
+              function name after that, what we're doing is accessing those functions
+              on that object. This may sound a little freaky but it's really simple,
+              and it's really mind-blowingly cool. The jQuery library is a very, very
+              complicated piece of code, but this particular aspect of it is quite
+              simple.
+            </dd>
+
+            <dt>Things To Do</dt>
+            <dd>
+              We're going to fool with the 
+              <a href='http://jsfiddle.net/Pointy/98EUy/11/' target='_blank'>same jsfiddle as last week</a>.
+              This time, instead of that ugly "switch" statement that I complained about,
+              what we're going to do is make an object.
+              Our object will have properties that correspond to the special "data-" attributes
+              on the calculator buttons. All our code will have to do is use the "data-" attribute
+              value to "look up" the function that'll perform the math operation, and then call
+              that function. It's not necessarily any less typing, but it's much more flexible
+              than the "switch" way of doing things.
+              <p>
+              Here's the "click" handler, for review:
+              <code>
+                $('.clickable').click(function() {
+                    var a = parseInt($('#A').val(), 10);
+                    var b = parseInt($('#B').val(), 10);
+                    var answer = null;
+                    var op = $(this).data('op');
+                   
+                    // cool stuff goes here
+                    
+                    $('#answer').text(answer);
+                    $('#active').text($(this).text());
+                });
+              </code>
+              So, we're going to create an object that's got properties that match our "data-" attributes.
+              Now, one thing not mentioned before is that when your object has properties that don't look
+              like nice, well-behaved words like "name" or "age", then in the object setup you have to
+              quote the names. We've seen that already with the jQuery ".css()" thing, so it should
+              not seem too weird:
+              <code>
+                    var ops = {
+                      '+': function(a, b) { return a + b; },
+                      '-': function(a, b) { return a - b; },
+                      '*': function(a, b) { return a * b; },
+                      '/': function(a, b) { return a / b; }
+                    };
+              </code>
+              There's our object, with four properties whose names are the symbols we use
+              for math in JavaScript. Now it's important to remember that even though they look
+              like the "real" operators, they're just strings as far as JavaScript is
+              concerned. Thus we need to do a "look-up" with the data attribute value
+              to find the function to call. The handler code already grabs the "data-op"
+              attribute into a variable called "op", so we can use that:
+              <code>
+                    answer = ops[op](a, b);
+              </code>
+              Wow. That one expression statement does the following things:
+              <ol>
+                <li>Use the value of "op" to look up a function in the "ops" object
+                <li>Call that function, passing in the "a" and "b" values from our input elements
+                <li>Assign the return value of that function to the "answer" variable
+              </ol>
+              If you think about it, that's basically the same thing that our "switch"
+              statement did last week.  Can you think of the ways in which this one is
+              "better" than the "switch" statement? What about ways that it's worse?
+            </dd>
+          </dl>
+        </section>
+      </div>
+    </div>
+
+    <footer>
+
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.3.min.js"><\/script>')</script>
+
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script defer src="js/plugins.js"></script>
+  <script defer src="js/script.js"></script>
+  <script defer src="js/wallflower-0.4.js"></script>
+  <!-- end scripts-->
+
+	
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+  
+</body>
+</html>
+
