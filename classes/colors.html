@@ -1,0 +1,325 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Web Programming</title>
+  <meta name="description" content="Friday Co-Op Web Programming, Fall 2011">
+  <meta name="author" content="Mike McNally emmecinque@gmail.com">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <link href='http://fonts.googleapis.com/css?family=UnifrakturCook:700|Numans|Aldrich|Short+Stack' rel='stylesheet' type='text/css'> 
+
+  <!-- CSS: implied media=all -->
+  <!-- CSS concatenated and minified via ant build script-->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/1140.css">
+  <link rel="stylesheet" href="css/1140_ie.css">
+  <link rel="stylesheet" href="css/by_media.css">
+  <!-- end CSS-->
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="js/modernizr-2.0.6.min.js"></script>
+</head>
+
+<body class='class-page'>
+
+  <div id="container" class='container'>
+    <header class='row'>
+      <div class='seven-wide col'>
+        <div style='padding: 10px'>
+          <h1 style='font-size: 295%;' class=''>Secrets of</h1>
+          <h1 style='font-size: 340%; padding-left: 50px' class=''>Web Programming</h1>
+        </div>
+      </div>
+      <div class='five-wide col info'>
+        <div style='padding: 10px'>
+          Friday Co-Op<br>
+          Fall 2011<br>
+          <a href='../index.html' title='Click to go back to the main scary page'>Main Page</a>
+        </div>
+      </div>
+    </header>
+
+    <div id="main" role="main" class='row'>
+      <div class='twelve-wide col'>
+        <section class='content'>
+          <h1>Colors</h1>
+          <dl>
+            <dt>Review</dt>
+            <dd>
+              Last week, we looked at the different kinds of values in JavaScript.
+              We saw numbers, strings, booleans, objects, and the weird non-value null.
+              We saw that objects can have properties that act kind-of like variables, in
+              that they're places to keep values.
+              <p>
+              This week we're going to do a modified calculator that'll allow operations
+              between colors. Along the way we'll talk about colors in general, colors
+              in computers (and on computer screens), and how colors work in HTML and
+              CSS (and, therefore, JavaScript).
+            </dd>
+            
+            <dt>Colors</dt>
+            <dd>
+              One of the interesting things about computer programming as a way to make a
+              living is that there are so many other things you learn about while doing it.
+              The topic of colors is a good example. The question, "what is a color?" may
+              seem simple, but if you really think about how you'd answer that to a person 
+              who really doesn't know, I think you'll agree that it'd be kind-of hard.
+              What would you say?
+              <p>
+              Color theory (and the study of light in general) is a surprisingly complex
+              field, and it's only fairly recently that people have been able to provide
+              good answers. That means that for most of recorded human history, nobody
+              really could answer the question, "what is a color?". I can't teach all about
+              color theory because I don't know much about it. However, because I've had
+              to deal with colors in computer programs, I've had to learn a little bit
+              about it.
+              <p>
+              Everything inside a computer, you'll recall, ultimately has to look like a
+              number or a series of numbers. Colors are no exception: inside the computer,
+              they're represented as numbers. How?  Well, we're going to have to find 
+              out a little about how colors work.
+            </dd>
+
+            <dt>Light</dt>
+            <dd>
+              First, we have to think about why it is that we want to fool around with
+              colors in our computer program in the first place.
+              What do we need to do with colors?  Well, we want parts of our web page
+              to show up on the screen glowing in some particular colors.  In other
+              words, we want to tell the web browser what color to make different
+              elements.
+              In many of the examples we've played with, we've used CSS to control
+              colors. Generally we used words like "red" and "green", but those, it
+              turns out, are just convenient short-cuts.
+              <p>
+              In the early 1800's, a really smart Englishman named Thomas Young was
+              the first person to figure out that the really interesting thing about
+              color is the fact that our eyes somehow see it. He proposed that we see
+              colors the way we do because our eyes have receptors in them for seeing
+              light of particular colors and then blending those so that we perceive 
+              all the colors we do.
+              <p>
+              In fact, what the nerves in your eyes can do is detect light of
+              certain wavelengths, with different varieties of nerve cells having 
+              a few (three) different ranges of sensitivity.  Through a fantastically
+              complicated process, signals from those nerves end up making our brains
+              "see" the colors we see.
+              <p>
+              Through a dramatic over-simplification of the mathematical and physiological
+              realities of color perception, the bottom line is that the colors you see
+              can be thought of as a combination of some selected particular colors,
+              each mixed in some "strength" or intensity. Traditionally, the color space
+              we perceive is called "R<sup>3</sup><sub>color</sub>", which is a system
+              where the selected colors added toghether are red, green, and blue.
+            </dd>
+
+            <dt>Color Computer Screens</dt>
+            <dd>
+              Because we can model human vision as a process of adding together particular
+              amounts of red, green, and blue light, it should be obvious how you'd make
+              a computer screen that can show selected colors at any point on the screen:
+              all you need is for each "dot" (pixel) to be able to mix red, green, and
+              blue at chosen strengths for each of the component colors.
+              <p>
+              Over the years since people have been making computers, there have been various
+              specific ways of setting things up so that those pixels can be told what to do.
+              Nowadays, however, there's really just one setup in common use, and thankfully
+              it's about the simplest way to do it.
+              Each pixel is controled by assigning it a "triplet" of three numbers. One
+              number tells it how bright the red light should be, another the green, and
+              the third, the blue.  Each of the numbers can be any value between zero (which
+              means that the color is completely turned off) and 255 (which means that the
+              color should be as bright as it can possibly be).
+              <p>
+              Telling a pixel to be color [0, 0, 0], then, is telling it to turn all the colors
+              off.  What would that look like?
+              <p>
+              Telling a pixel to be [255, 255, 255] is telling it to turn all the colors on,
+              full blast. What would that look like?
+            </dd>
+
+            <dt>Colors via Web Browsers</dt>
+            <dd>
+              Through CSS, web browsers let us tell them what colors to make text show up
+              on the screen, and what colors our element backgrounds and borders should be.
+              We've seen the shortcut ways ("red" and "green" etc), so now we can look at
+              the real underlying way that those red-green-blue "triplets" are represented.
+              There are two numeric ways that colors can be expressed.
+              <p>
+              The first, and original, way that colors are expressed is as a six-digit
+              number in base 16 (often called "hex", short for "hexadecimal").
+              What's base 16?  Well imagine if people had eight fingers
+              on each hand instead of five. If we did, then instead of switching to multi-digit
+              numbers when we get to ten we'd just move on to our other fingers. It wouldn't be 
+              until we got to 16 that we'd need another digit! Base 16 numbers come up a lot
+              in computer programming because the basic storage units inside the computer
+              are clumped in groups numbering various powers of 2, like 4, 8, 16, 32, and
+              64.  A four-digit base-2 number (that is, four zeros and ones) can represent
+              sixteen distinct numbers.
+              <p>
+              As you might guess, those 6-digit color numbers are six digits long because
+              they're divided up into the red part, the green part, and the blue part.
+              And yes, two base-16 digits can represent any value from zero up to 255!
+              It's all really great, except that humans don't actually have eight fingers.
+              <p>
+              We won't go into the math of converting back and forth between base 10 and
+              base 16 (though it's pretty easy), so for now here's what you need to know:
+              <ul>
+                <li>The digits in base 16 are our familiar base 10 digits, plus "a", "b", "c", "d", "e", and "f". The letters are sometimes written as capitals; it doesn't matter in CSS which you use.
+                <li>The digit "a" has the value 10, "b" is 11, and so on up to "f" which is 15.
+                <li>In a 6-digit color number, the first two characters (digits) represent the red value. The second two are green, and the third two are blue.
+                <li>The two-hex-digit number "ff" is the biggest such number, and it's 255.
+              </ul>
+              In CSS, a color value must be preceded with a "#" character so that the browser
+              doesn't think we just misspelled "red".  Thus:
+              <code>
+                body { background-color: #336699; }
+              </code>
+              That makes the background be the color with "33" for red, "66" for green, and "99" for blue.
+              Because the blue number is the biggest, the overall effect is a shade of blue.
+              <p>
+              Over the past couple of years, newer browsers have allowed a simpler representation
+              for RGB colors, which looks like this:
+              <code>
+                body { backgound-color: rgb(51, 102, 153); }
+              </code>
+              That gives the same color as "#336699".
+            </dd>
+
+            <dt>Alpha<dt>
+            <dd>
+              The other way to represent colors is relatively new in the world of web browsers, 
+              though it's been common in other computer applications for a long time.
+              The neat thing about this second color notation is that it also lets us control
+              how a color should blend with other colors. The representation is called "rgba",
+              or "red-green-blue-alpha".  The "alpha" part can be thought of as the "strength"
+              of the red-green-blue color.
+              <p>
+              A good way to understand how this color mixing works is to imagine that all your
+              HTML elements are like little pieces of colored plastic, all arranged on top of
+              the body element. Starting from the body, then, you mix "up" starting from white.
+              Every element over a given pixel contributes it's color, with the "alpha" value
+              controlling how "strong" the color is.
+              <p>
+              An RGB color with "alpha" is expressed like this:
+              <code>
+                #something {
+                  background-color: rgba(200, 40, 20, 0.5);
+                }
+              </code>
+              That CSS sets the background color of the selected element to a reddish
+              color, but with only "0.5" for the "alpha" value. That means that the
+              color is at half strength, Or, thinking about our plastic things, it's
+              like a piece of red plastic that's about 1/2 transparent.  A smaller "alpha"
+              value (like 0.2) is like a lighter-colored piece of plastic, and a bigger
+              "alpha" is like a less-transparent, darker piece of plastic.
+            </dd>
+
+            <dt>Oh Wait Yet Another Color Method</dt>
+            <dd>
+              So I lied when I said there were just two ways to represent colors. There's
+              also another way, one that looks kind-of like "rgba" but which is quite
+              different.
+              <p>
+              Another way to represent colors is with a schema called "HSL".  The letters
+              stand for "hue" &mdash; which kind-of means the basic color &mdash; "saturation" &mdash;
+              which represents the amount of white mixed with the fundamental color &mdash; and
+              "lightness", which is sort-of the "brightness" but slightly different in weird 
+              ways that I don't entirely understand.
+              <p>
+              Using HSL colors is a totally different way of thinking about the nature of
+              a color. Instead of thinking about mixing the more-or-less arbitrary red, green,
+              and blue "primary" additive colors, you start from the idea of a color on a 
+              circle of all basic color tones that we can see. That's the "hue".  It's a
+              circle for basically mathematical reasons (of extraordinary complexity).
+              The "hue" value is like a measurement on a protractor of degrees around a
+              circle.
+              <p>
+              The "saturation" value reflects how "deep" or "pale" a color is. Paler colors
+              like pink have more white mixed in that deeper colors like scarlet or pure red.
+              The "lightness" value is sort-of the opposite of "saturation". Both lightness
+              and saturation are expressed as percentages, between 0% and 100%. Thus, a 
+              "pure" color is a hue measurement with a 100% saturation (no white mixed in)
+              and a 50% lightness (halfway between too bright and too dark).
+              <p>
+              HSL values can have an "alpha" value too, so when expressed in CSS such
+              colors look like this:
+              <code>
+                #something {
+                  background-color: hsla(200, 80%, 50%, 0.9);
+                }
+              </code>
+              That color is a hue at 200 degrees around the color circle (a blue-ish color),
+              with 80% saturation (pretty deep) and 50% lightness (balanced).
+            </dd>
+
+            <dt>Things To Do</dt>
+            <dd>
+              <a href='http://jsfiddle.net/Pointy/FpsV9/5/' target='_blank'>Here is the exercise for this week.</a>.
+              This is different from other of our exercises because it's all done, and it's just a toy
+              for playing with colors.
+              <p>
+              You'll see that there's a clump of "div" elements set up as circles at the top.
+              Below that, there are some controls to set the colors.
+              What these controls let you do is fool around with color combinations and
+              see how those look when they combine with different "alpha" values.
+              <p>
+              We'll basically just play with this page. On the RGBA controls, the red, green, and blue values
+              should be numbers from 0 to 255, and the "alpha" should be a decimal number between 0 and 1.
+              For the HSLA colors, the "hue" should be a number between 0 and 359, the "saturation" and "lightness"
+              should be percentages (0% to 100%), and the "alpha" is as with RGBA.
+            </dd>
+          </dl>
+        </section>
+      </div>
+    </div>
+
+    <footer>
+
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.3.min.js"><\/script>')</script>
+
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script defer src="js/plugins.js"></script>
+  <script defer src="js/script.js"></script>
+  <script defer src="js/wallflower-0.4.js"></script>
+  <!-- end scripts-->
+
+	
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+  
+</body>
+</html>
+
