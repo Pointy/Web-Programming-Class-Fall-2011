@@ -287,6 +287,31 @@
               should be numbers from 0 to 255, and the "alpha" should be a decimal number between 0 and 1.
               For the HSLA colors, the "hue" should be a number between 0 and 359, the "saturation" and "lightness"
               should be percentages (0% to 100%), and the "alpha" is as with RGBA.
+              <p>
+              <a href='http://jsfiddle.net/Pointy/93end/1/' target='_blank'>Here is another fiddle.</a>
+              This one is just a simple example of a color picker tool.  I just found it out on 
+              the internet and set it up so that we can use it.
+              <p>
+              The fiddle is set up so that when it starts, a color picker tool shows up. It's
+              based on the HSL model of color.  The circle around the square is the "hue" part.
+              The horizontal direction in the square is the saturation, and the vertical direction
+              is the lightness.  Note that the deepest color is halfway up on the left side.
+              The saturation direction (horizontal) is 100% on the left and 0% on the right, and
+              the lightness direction is 100% at the top and 0% at the bottom.
+              <p>
+              We'll add a little bit of code for fun to capture the picked color.  The callback to
+              the "farbtastic" function (that's the name of this particular color picker) is passed
+              the color in RGB hex notation, so we can use it to put a highlight around the little
+              information box:
+              <code>
+                $('#colors').farbtastic(function(color) {
+                  $('#picked').text(color);
+                  $('#result').css({
+                    'box-shadow': 'inset 0 0 12px ' + color
+                  });
+                });
+              </code>
+             
             </dd>
           </dl>
         </section>
