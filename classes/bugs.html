@@ -1,0 +1,252 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Web Programming</title>
+  <meta name="description" content="Friday Co-Op Web Programming, Fall 2011">
+  <meta name="author" content="Mike McNally emmecinque@gmail.com">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <link href='http://fonts.googleapis.com/css?family=UnifrakturCook:700|Numans|Aldrich|Short+Stack' rel='stylesheet' type='text/css'> 
+
+  <!-- CSS: implied media=all -->
+  <!-- CSS concatenated and minified via ant build script-->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/1140.css">
+  <link rel="stylesheet" href="css/1140_ie.css">
+  <link rel="stylesheet" href="css/by_media.css">
+  <!-- end CSS-->
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="js/modernizr-2.0.6.min.js"></script>
+</head>
+
+<body class='class-page'>
+
+  <div id="container" class='container'>
+    <header class='row'>
+      <div class='seven-wide col'>
+        <div style='padding: 10px'>
+          <h1 style='font-size: 295%;' class=''>Secrets of</h1>
+          <h1 style='font-size: 340%; padding-left: 50px' class=''>Web Programming</h1>
+        </div>
+      </div>
+      <div class='five-wide col info'>
+        <div style='padding: 10px'>
+          Friday Co-Op<br>
+          Fall 2011<br>
+          <a href='../index.html' title='Click to go back to the main scary page'>Main Page</a>
+        </div>
+      </div>
+    </header>
+
+    <div id="main" role="main" class='row'>
+      <div class='twelve-wide col'>
+        <section class='content'>
+          <h1>Bugs And Debugging</h1>
+          <dl>
+            <dt>Review</dt>
+            <dd>
+              Last week, we talked &mdash; no, I talked &mdash; about colors.
+              I went on at length about how colors and light are the most important
+              thing ever.
+              We looked at different ways people have represented colors for computers
+              and about how colors work in HTML and CSS.
+              <p>
+              This week we're going to spend some time talking about what bugs
+              are, where they come from, and what we can do to fix them.
+              We'll talk about tools that are available in (or for) web browsers
+              to help with that process.
+            </dd>
+
+            <dt>Bugs</dt>
+            <dd>
+              Recall that "computer programming" means, "telling a computer what
+              to do," and that "web programming", our occupation, means, "telling
+              a web browser what to do."
+              In that context, the term "bug" means, "something that the computer
+              (or web browser) does that we don't want it to do," or "something that
+              it doesn't do that we do want it to do."
+              <p>
+              From that definition, it's clear that a "bug" might take on many,
+              many variations:
+              <ul>
+                <li>Content on the page that's not supposed to be there;
+                <li>Missing content;
+                <li>Content in the wrong place;
+                <li>Content that looks different from the way we want;
+                <li>Interactions (mouse clicks, keyboard actions, etc) that don't happen when we want;
+                <li>Interactions that do happen when we don't want;
+                <li>Interactions that have the wrong effect;
+              </ul>
+              Believe me, I could go on and on.  There's no way to count how many
+              bugs there might be. There might even be bugs in the web browser itself
+              that cause things not to work, or to work differently than we expect.
+            </dd>
+
+            <dt>Bug Origins</dt>
+            <dd>
+              Where do bugs come from?
+              Well, one of the most important things to accept as a programmer
+              is that, while it's possible that system (or "platform") bugs &mdash;
+              bugs in other software or hardware that you rely on for your own
+              code to work &mdash; might be the cause of bugs you're experiencing
+              in something you're working on, the simple fact is that almost all
+              bugs you see are ultimately your problems.
+              In web programming, this can be especially frustrating, in that 
+              though web browsers, as software platforms go, have a whole lot
+              of bugs of their own (some more than others), you have to accept
+              them and deal with them because you really can't change the way
+              that the browsers work!
+              <p>
+              So, most of the time (really, almost always), when you see something
+              not work the way you expect, it means you've done something wrong.
+              In a way, that makes programming an easier academic pursuit than
+              some others, because you often find out that you've made a mistake
+              almost immediately. (Sometimes, of course, you don't, because some
+              bugs only happen to certain web browsers in certain situations.)
+              That means that when you see a bug, you have to work backwards and 
+              do a little basic detective work to find it.
+              In other words, when you're thinking about how to make something
+              work, you start from "what do I want to do?", and then through,
+              "how should I do it?", and then you start typing stuff in.  Well,
+              when you see a bug, you have to think, "what's supposed to happen?"
+              and then, "how did I think that would work?" and then "what did
+              I try to do to make it work?".
+              <p>
+              This detective work can be, at times, incredibly hard. It can also
+              be incredibly easy. It's hard to predict.
+              The most important thing to remember is to approach the problem
+              based on the evidence you have, and to resist as strongly as you
+              can the temptation to blame something other than your own work.
+            </dd>
+
+            <dt>Gathering Evidence</dt>
+            <dd>
+              Whenever you do detective work, evidence is the foundation
+              of all the thinking you do.
+              Thus, when you find a bug, gathering evidence about the bug
+              is definitely the most important job.  Here's a rough list
+              of things to think about:
+              <ul>
+                <li>Is it really a bug?  Is what's happening really wrong?
+                (This is especially important when somebody else tells you about the bug.)
+                <li>Does the bug happen all the time or just sometimes?
+                <li>How much of the rest of the web page (or whatever) does work properly?
+                <li>What aspect of the web page is affected?
+                <li>What has to happen in order to see the bug?
+                <li>Is there anything that can happen that makes the bug not be seen?
+              </ul>
+              That's an incomplete list of course.
+              The point is that it really is an experimental process.
+              Your web program is, in a real sense, unique, and it may very
+              well be that the bug in your program is the first such bug
+              ever seen by any human being ever.
+              Thus, there's not going to be any place to go look up a 
+              solution, or at least no easy place.
+              Even if there were, it's vital that you understand enough
+              about your bug to describe the problem; otherwise, no "magic
+              oracle" will be able to help you anyway.
+              <p>
+              Like a scientist in another discipline, tools can help extend
+              your own senses to help you gather more and better evidence.
+              The tools available in modern web browsers are amazingly
+              powerful, but they're designed for serious business so they're
+              not always "friendly".  That said, the world of the web
+              programmer today is far, far better in this regard than it
+              was just a few years ago.
+              <p>
+              The tools you have available vary from web browser to web
+              browser. I'll talk mostly about what's available in Firefox
+              and what's available in Google Chrome.
+            </dd>
+            
+            <dt>Firebug</dt>
+            <dd>
+              The Firebug add-on for Firefox is available
+              <a href='http://getfirebug.com/' target='_blank'>here</a>.
+              It's free.
+              When you install it, you'll see a little "bug" icon in your browser menu.
+              Different versions of Firebug put the little bug in different places, so you may have
+              to look for it. If you can't find it, then you can hit the "F12" key on your
+              keyboard to activate it.
+              <p>
+              Firebug is, in my opinion, the best web browser bug helper tool (or, "debugger').
+              It lets you mess around with the following things:
+              <ul>
+                <li>The HTML of your page
+                <li>The CSS settings for each element
+                <li>JavaScript
+                <li>Network interactions between your browser and the server
+              </ul>
+              Without something like Firebug, you're in the dark, really, but with
+              it you can find out a tremendous amount of information about what's
+              going on in a web page.
+              <p>
+              It would take a really long time to just talk about what it does,
+              so I'll do some demonstrations.
+            </dd>
+
+            <dt>Chrome</dt>
+            <dd>
+              The Google Chrome browser includes some built-in "Developer tools".
+              You get to them from the Chrome menu.
+              The tools you get in Chrome are mostly the same sort of thing that
+              Firebug gives you. In a couple of details, the Chrome tools are a
+              little bit nicer, but overall there are things that Firebug does
+              really well that leads me to prefer that over Chrome.
+              However, some people feel otherwise.
+            </dd>
+          </dl>
+        </section>
+      </div>
+    </div>
+
+    <footer>
+
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.3.min.js"><\/script>')</script>
+
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script defer src="js/plugins.js"></script>
+  <script defer src="js/script.js"></script>
+  <script defer src="js/wallflower-0.4.js"></script>
+  <!-- end scripts-->
+
+	
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+  
+</body>
+</html>
+
